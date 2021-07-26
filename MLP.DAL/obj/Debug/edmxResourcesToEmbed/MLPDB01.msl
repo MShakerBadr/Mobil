@@ -1,0 +1,1544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MLPDB01ModelStoreContainer" CdmEntityContainer="MLPDB01Entities">
+    <EntitySetMapping Name="AdminConfigurations">
+      <EntityTypeMapping TypeName="MLPDB01Model.AdminConfiguration">
+        <MappingFragment StoreEntitySet="AdminConfiguration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConfigurationName" ColumnName="ConfigurationName" />
+          <ScalarProperty Name="ConfigurationValue" ColumnName="ConfigurationValue" />
+          <ScalarProperty Name="ConfigurationUnit" ColumnName="ConfigurationUnit" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminSettings">
+      <EntityTypeMapping TypeName="MLPDB01Model.AdminSetting">
+        <MappingFragment StoreEntitySet="AdminSettings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PointsExpiryDays" ColumnName="PointsExpiryDays" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Auditings">
+      <EntityTypeMapping TypeName="MLPDB01Model.Auditing">
+        <MappingFragment StoreEntitySet="Auditing">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AuditingNo" ColumnName="AuditingNo" />
+          <ScalarProperty Name="AuditingDate" ColumnName="AuditingDate" />
+          <ScalarProperty Name="Fk_ServiceCenterID" ColumnName="Fk_ServiceCenterID" />
+          <ScalarProperty Name="FK_DocStatusID" ColumnName="FK_DocStatusID" />
+          <ScalarProperty Name="FK_SysUserID" ColumnName="FK_SysUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditingItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.AuditingItem">
+        <MappingFragment StoreEntitySet="AuditingItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_AuditingID" ColumnName="FK_AuditingID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="InventoryQuantity" ColumnName="InventoryQuantity" />
+          <ScalarProperty Name="DifferenceQuantity" ColumnName="DifferenceQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutomatedRequests">
+      <EntityTypeMapping TypeName="MLPDB01Model.AutomatedRequest">
+        <MappingFragment StoreEntitySet="AutomatedRequest">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AutRequestNo" ColumnName="AutRequestNo" />
+          <ScalarProperty Name="FK_CenterID" ColumnName="FK_CenterID" />
+          <ScalarProperty Name="FK_StatusID" ColumnName="FK_StatusID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FK_ManagerID" ColumnName="FK_ManagerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Awards">
+      <EntityTypeMapping TypeName="MLPDB01Model.Award">
+        <MappingFragment StoreEntitySet="Awards">
+          <ScalarProperty Name="FK_AwardTypeID" ColumnName="FK_AwardTypeID" />
+          <ScalarProperty Name="MaxRedeemCount" ColumnName="MaxRedeemCount" />
+          <ScalarProperty Name="MaxDiscountValue" ColumnName="MaxDiscountValue" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="AwardImage" ColumnName="AwardImage" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FK_LevelID" ColumnName="FK_LevelID" />
+          <ScalarProperty Name="AwardDuePoints" ColumnName="AwardDuePoints" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingServices">
+      <EntityTypeMapping TypeName="MLPDB01Model.BookingService">
+        <MappingFragment StoreEntitySet="BookingServices">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ServiceID" ColumnName="FK_ServiceID" />
+          <ScalarProperty Name="FK_BookingID" ColumnName="FK_BookingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingTimeSlots">
+      <EntityTypeMapping TypeName="MLPDB01Model.BookingTimeSlot">
+        <MappingFragment StoreEntitySet="BookingTimeSlots">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_TimeSlotID" ColumnName="FK_TimeSlotID" />
+          <ScalarProperty Name="FK_BookingID" ColumnName="FK_BookingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bundles">
+      <EntityTypeMapping TypeName="MLPDB01Model.Bundle">
+        <MappingFragment StoreEntitySet="Bundle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BundleName" ColumnName="BundleName" />
+          <ScalarProperty Name="BundleNameAr" ColumnName="BundleNameAr" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BundlePrice" ColumnName="BundlePrice" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BundleItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.BundleItem">
+        <MappingFragment StoreEntitySet="BundleItems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="BundleItemPrice" ColumnName="BundleItemPrice" />
+          <ScalarProperty Name="BundleItemQuantity" ColumnName="BundleItemQuantity" />
+          <ScalarProperty Name="FK_BundleID" ColumnName="FK_BundleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category1">
+      <EntityTypeMapping TypeName="MLPDB01Model.Category1">
+        <MappingFragment StoreEntitySet="Category1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category1Name" ColumnName="Category1Name" />
+          <ScalarProperty Name="Category1NameAr" ColumnName="Category1NameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category2">
+      <EntityTypeMapping TypeName="MLPDB01Model.Category2">
+        <MappingFragment StoreEntitySet="Category2">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category2Name" ColumnName="Category2Name" />
+          <ScalarProperty Name="Category2NameAr" ColumnName="Category2NameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_Category1ID" ColumnName="FK_Category1ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category3">
+      <EntityTypeMapping TypeName="MLPDB01Model.Category3">
+        <MappingFragment StoreEntitySet="Category3">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category3Name" ColumnName="Category3Name" />
+          <ScalarProperty Name="Category3NameAr" ColumnName="Category3NameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_Category2ID" ColumnName="FK_Category2ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category4">
+      <EntityTypeMapping TypeName="MLPDB01Model.Category4">
+        <MappingFragment StoreEntitySet="Category4">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category4Name" ColumnName="Category4Name" />
+          <ScalarProperty Name="Category4NameAr" ColumnName="Category4NameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_Category3ID" ColumnName="FK_Category3ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="MLPDB01Model.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityNameAR" ColumnName="CityNameAR" />
+          <ScalarProperty Name="FK_RegionIID" ColumnName="FK_RegionIID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="MLPDB01Model.Collection">
+        <MappingFragment StoreEntitySet="Collection">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+          <ScalarProperty Name="SendingDate" ColumnName="SendingDate" />
+          <ScalarProperty Name="AmountRequired" ColumnName="AmountRequired" />
+          <ScalarProperty Name="ActualAmount" ColumnName="ActualAmount" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="CollectorCode" ColumnName="CollectorCode" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+          <ScalarProperty Name="IsCollected" ColumnName="IsCollected" />
+          <ScalarProperty Name="HasProblem" ColumnName="HasProblem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collectors">
+      <EntityTypeMapping TypeName="MLPDB01Model.Collector">
+        <MappingFragment StoreEntitySet="Collector">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ColImage" ColumnName="ColImage" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollectorsDailyCodes">
+      <EntityTypeMapping TypeName="MLPDB01Model.CollectorsDailyCode">
+        <MappingFragment StoreEntitySet="CollectorsDailyCode">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CodeDate" ColumnName="CodeDate" />
+          <ScalarProperty Name="CollectorCode" ColumnName="CollectorCode" />
+          <ScalarProperty Name="FK_CollectorID" ColumnName="FK_CollectorID" />
+          <ScalarProperty Name="CollectionMessage" ColumnName="CollectionMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MLPDB01Model.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="AlfursanNo" ColumnName="AlfursanNo" />
+          <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+          <ScalarProperty Name="FirstLoginDate" ColumnName="FirstLoginDate" />
+          <ScalarProperty Name="NoOfPoints" ColumnName="NoOfPoints" />
+          <ScalarProperty Name="FK_AreaID" ColumnName="FK_AreaID" />
+          <ScalarProperty Name="IsFristlogin" ColumnName="IsFristlogin" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerSCID" ColumnName="CustomerSCID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="ServerLastModifiedDate" ColumnName="ServerLastModifiedDate" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsMobileUser" ColumnName="IsMobileUser" />
+          <ScalarProperty Name="FK_LatestLevelID" ColumnName="FK_LatestLevelID" />
+          <ScalarProperty Name="CurrentPoints" ColumnName="CurrentPoints" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomersCarNumbers">
+      <EntityTypeMapping TypeName="MLPDB01Model.CustomersCarNumber">
+        <MappingFragment StoreEntitySet="CustomersCarNumbers">
+          <ScalarProperty Name="FK_Engine_Type" ColumnName="FK_Engine_Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+          <ScalarProperty Name="FK_CustomerCode" ColumnName="FK_CustomerCode" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="Car_Code" ColumnName="Car_Code" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="vendor" ColumnName="vendor" />
+          <ScalarProperty Name="Motor" ColumnName="Motor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyReportsLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.DailyReportsLog">
+        <MappingFragment StoreEntitySet="DailyReportsLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DashBoardCharts">
+      <EntityTypeMapping TypeName="MLPDB01Model.DashBoardChart">
+        <MappingFragment StoreEntitySet="DashBoardCharts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+          <ScalarProperty Name="ChartNameAR" ColumnName="ChartNameAR" />
+          <ScalarProperty Name="ChartType" ColumnName="ChartType" />
+          <ScalarProperty Name="SP_Name" ColumnName="SP_Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="SP_Body" ColumnName="SP_Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.DocStatu">
+        <MappingFragment StoreEntitySet="DocStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DocStatusNameAr" ColumnName="DocStatusNameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicePayments">
+      <EntityTypeMapping TypeName="MLPDB01Model.InvoicePayment">
+        <MappingFragment StoreEntitySet="InvoicePayment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_PaymentTypeID" ColumnName="FK_PaymentTypeID" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FK_InvoiceID" ColumnName="FK_InvoiceID" />
+          <ScalarProperty Name="FK_InvoiceTypeID" ColumnName="FK_InvoiceTypeID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.InvoiceType">
+        <MappingFragment StoreEntitySet="InvoiceType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="InvoiceType1" ColumnName="InvoiceType" />
+          <ScalarProperty Name="InvoiceTypeAr" ColumnName="InvoiceTypeAr" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.ItemType">
+        <MappingFragment StoreEntitySet="ItemType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemTypeName" ColumnName="ItemTypeName" />
+          <ScalarProperty Name="ItemTypeNameAr" ColumnName="ItemTypeNameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="MLPDB01Model.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LanguageArName" ColumnName="LanguageArName" />
+          <ScalarProperty Name="LanguageEnName" ColumnName="LanguageEnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.LoginLog">
+        <MappingFragment StoreEntitySet="LoginLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoyaltyLevels">
+      <EntityTypeMapping TypeName="MLPDB01Model.LoyaltyLevel">
+        <MappingFragment StoreEntitySet="LoyaltyLevels">
+          <ScalarProperty Name="ToPoints" ColumnName="ToPoints" />
+          <ScalarProperty Name="FromPoints" ColumnName="FromPoints" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LevelEng" ColumnName="LevelEng" />
+          <ScalarProperty Name="LevelAR" ColumnName="LevelAR" />
+          <ScalarProperty Name="NoOfVisits" ColumnName="NoOfVisits" />
+          <ScalarProperty Name="DuePoints" ColumnName="DuePoints" />
+          <ScalarProperty Name="PointsPerSAR" ColumnName="PointsPerSAR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.MenuItem">
+        <MappingFragment StoreEntitySet="MenuItems">
+          <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+          <ScalarProperty Name="MenuItemName" ColumnName="MenuItemName" />
+          <ScalarProperty Name="MenuItemDesc" ColumnName="MenuItemDesc" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="NavigationUrl" ColumnName="NavigationUrl" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="MenuItemNameAR" ColumnName="MenuItemNameAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuSubMenuItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.MenuSubMenuItem">
+        <MappingFragment StoreEntitySet="MenuSubMenuItems">
+          <ScalarProperty Name="MenuSubMenuItemID" ColumnName="MenuSubMenuItemID" />
+          <ScalarProperty Name="FK_MenuItemID" ColumnName="FK_MenuItemID" />
+          <ScalarProperty Name="FK_SubMenuItemID" ColumnName="FK_SubMenuItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageComments">
+      <EntityTypeMapping TypeName="MLPDB01Model.MessageComment">
+        <MappingFragment StoreEntitySet="MessageComment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContactMessage" ColumnName="ContactMessage" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="FK_SenderID" ColumnName="FK_SenderID" />
+          <ScalarProperty Name="FK_MessageThreadID" ColumnName="FK_MessageThreadID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageThreads">
+      <EntityTypeMapping TypeName="MLPDB01Model.MessageThread">
+        <MappingFragment StoreEntitySet="MessageThread">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ThreadTitle" ColumnName="ThreadTitle" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MobileCategories">
+      <EntityTypeMapping TypeName="MLPDB01Model.MobileCategory">
+        <MappingFragment StoreEntitySet="MobileCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+          <ScalarProperty Name="ProductCategoryAr" ColumnName="ProductCategoryAr" />
+          <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MobileDailyReports">
+      <EntityTypeMapping TypeName="MLPDB01Model.MobileDailyReport">
+        <MappingFragment StoreEntitySet="MobileDailyReports">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ToMail" ColumnName="ToMail" />
+          <ScalarProperty Name="CCMail" ColumnName="CCMail" />
+          <ScalarProperty Name="BCCMail" ColumnName="BCCMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="MLPDB01Model.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleAr" ColumnName="TitleAr" />
+          <ScalarProperty Name="NewsImage" ColumnName="NewsImage" />
+          <ScalarProperty Name="NewsAbtract" ColumnName="NewsAbtract" />
+          <ScalarProperty Name="NewsAbtractAr" ColumnName="NewsAbtractAr" />
+          <ScalarProperty Name="NewsHTML" ColumnName="NewsHTML" />
+          <ScalarProperty Name="NewsHTMLAr" ColumnName="NewsHTMLAr" />
+          <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationMessages">
+      <EntityTypeMapping TypeName="MLPDB01Model.NotificationMessage">
+        <MappingFragment StoreEntitySet="NotificationMessages">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="MLPDB01Model.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_Message" ColumnName="FK_Message" />
+          <ScalarProperty Name="FK_CenterID" ColumnName="FK_CenterID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_Status" ColumnName="FK_Status" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationsStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.NotificationsStatu">
+        <MappingFragment StoreEntitySet="NotificationsStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.PaymentType">
+        <MappingFragment StoreEntitySet="PaymentType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+          <ScalarProperty Name="PaymentTypeNameAr" ColumnName="PaymentTypeNameAr" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Points">
+      <EntityTypeMapping TypeName="MLPDB01Model.Point">
+        <MappingFragment StoreEntitySet="Point">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BillPoints" ColumnName="BillPoints" />
+          <ScalarProperty Name="SARPoints" ColumnName="SARPoints" />
+          <ScalarProperty Name="FirstTimePoints" ColumnName="FirstTimePoints" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Validity" ColumnName="Validity" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointsReasons">
+      <EntityTypeMapping TypeName="MLPDB01Model.PointsReason">
+        <MappingFragment StoreEntitySet="PointsReason">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ReasonID" ColumnName="FK_ReasonID" />
+          <ScalarProperty Name="NoOfPoints" ColumnName="NoOfPoints" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="IsOnce" ColumnName="IsOnce" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointsReasonsProducts">
+      <EntityTypeMapping TypeName="MLPDB01Model.PointsReasonsProduct">
+        <MappingFragment StoreEntitySet="PointsReasonsProducts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_PointsReasonID" ColumnName="FK_PointsReasonID" />
+          <ScalarProperty Name="FK_ProductID" ColumnName="FK_ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointsReasonsSCenters">
+      <EntityTypeMapping TypeName="MLPDB01Model.PointsReasonsSCenter">
+        <MappingFragment StoreEntitySet="PointsReasonsSCenters">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_PointsReasonsID" ColumnName="FK_PointsReasonsID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSConnectionLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.POSConnectionLog">
+        <MappingFragment StoreEntitySet="POSConnectionLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LogTimeStamp" ColumnName="LogTimeStamp" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="SourceIP" ColumnName="SourceIP" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSInvoices">
+      <EntityTypeMapping TypeName="MLPDB01Model.POSInvoice">
+        <MappingFragment StoreEntitySet="POSInvoice">
+          <ScalarProperty Name="TotalWithVat" ColumnName="TotalWithVat" />
+          <ScalarProperty Name="VatPercent" ColumnName="VatPercent" />
+          <ScalarProperty Name="Vat" ColumnName="Vat" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_CustomerCode" ColumnName="FK_CustomerCode" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="VisaLastDigits" ColumnName="VisaLastDigits" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="ServerLastModifiedDate" ColumnName="ServerLastModifiedDate" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="FK_CarCode" ColumnName="FK_CarCode" />
+          <ScalarProperty Name="CurrentMileage" ColumnName="CurrentMileage" />
+          <ScalarProperty Name="NextVisit" ColumnName="NextVisit" />
+          <ScalarProperty Name="LoyaltyPoints" ColumnName="LoyaltyPoints" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSInvoiceItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.POSInvoiceItem">
+        <MappingFragment StoreEntitySet="POSInvoiceItem">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="LoyaltyPoints" ColumnName="LoyaltyPoints" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="OriginalPrice" ColumnName="OriginalPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FK_InvoiceID" ColumnName="FK_InvoiceID" />
+          <ScalarProperty Name="FK_BundleID" ColumnName="FK_BundleID" />
+          <ScalarProperty Name="FK_ParentID" ColumnName="FK_ParentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PosReports">
+      <EntityTypeMapping TypeName="MLPDB01Model.PosReport">
+        <MappingFragment StoreEntitySet="PosReport">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="ReportNameAr" ColumnName="ReportNameAr" />
+          <ScalarProperty Name="SP_Name" ColumnName="SP_Name" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="SP_Body" ColumnName="SP_Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promotions">
+      <EntityTypeMapping TypeName="MLPDB01Model.Promotion">
+        <MappingFragment StoreEntitySet="Promotion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DescEng" ColumnName="DescEng" />
+          <ScalarProperty Name="DescAR" ColumnName="DescAR" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="ImageEng" ColumnName="ImageEng" />
+          <ScalarProperty Name="ImageAR" ColumnName="ImageAR" />
+          <ScalarProperty Name="DescriptionHTML" ColumnName="DescriptionHTML" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="OriginalPrice" ColumnName="OriginalPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reasons">
+      <EntityTypeMapping TypeName="MLPDB01Model.Reason">
+        <MappingFragment StoreEntitySet="Reason">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Reason1" ColumnName="Reason" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RedemptionRequests">
+      <EntityTypeMapping TypeName="MLPDB01Model.RedemptionRequest">
+        <MappingFragment StoreEntitySet="RedemptionRequests">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="FK_AwardID" ColumnName="FK_AwardID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="RedeemDate" ColumnName="RedeemDate" />
+          <ScalarProperty Name="RedeemPoints" ColumnName="RedeemPoints" />
+          <ScalarProperty Name="CustomerConfirmCode" ColumnName="CustomerConfirmCode" />
+          <ScalarProperty Name="RedemptionConfirmCode" ColumnName="RedemptionConfirmCode" />
+          <ScalarProperty Name="POSCreatorCodeID" ColumnName="POSCreatorCodeID" />
+          <ScalarProperty Name="FK_RedeemStatusID" ColumnName="FK_RedeemStatusID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RedemptionStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.RedemptionStatu">
+        <MappingFragment StoreEntitySet="RedemptionStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="MLPDB01Model.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="RegionNameAr" ColumnName="RegionNameAr" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="MLPDB01Model.Report">
+        <MappingFragment StoreEntitySet="Reports">
+          <ScalarProperty Name="RptID" ColumnName="RptID" />
+          <ScalarProperty Name="RptName" ColumnName="RptName" />
+          <ScalarProperty Name="RptSPName" ColumnName="RptSPName" />
+          <ScalarProperty Name="Fk_RptGroupID" ColumnName="Fk_RptGroupID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="IsAdvanced" ColumnName="IsAdvanced" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.RequestItem">
+        <MappingFragment StoreEntitySet="RequestItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestOrders">
+      <EntityTypeMapping TypeName="MLPDB01Model.RequestOrder">
+        <MappingFragment StoreEntitySet="RequestOrder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+          <ScalarProperty Name="FK_CenterID" ColumnName="FK_CenterID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_StatusID" ColumnName="FK_StatusID" />
+          <ScalarProperty Name="FK_RequestType" ColumnName="FK_RequestType" />
+          <ScalarProperty Name="FK_ManagerID" ColumnName="FK_ManagerID" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestsLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.RequestsLog">
+        <MappingFragment StoreEntitySet="RequestsLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="FK_ItemID" ColumnName="FK_ItemID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.RequestStatu">
+        <MappingFragment StoreEntitySet="RequestStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="ArStatusName" ColumnName="ArStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.RequestType">
+        <MappingFragment StoreEntitySet="RequestType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="RequestTypeName" ColumnName="RequestTypeName" />
+          <ScalarProperty Name="ARRequestTypeName" ColumnName="ARRequestTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReturnInvoices">
+      <EntityTypeMapping TypeName="MLPDB01Model.ReturnInvoice">
+        <MappingFragment StoreEntitySet="ReturnInvoice">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_InvoiceNo" ColumnName="FK_InvoiceNo" />
+          <ScalarProperty Name="ReturnInvoiceNo" ColumnName="ReturnInvoiceNo" />
+          <ScalarProperty Name="TotalRetAmount" ColumnName="TotalRetAmount" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReturnInvoiceItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.ReturnInvoiceItem">
+        <MappingFragment StoreEntitySet="ReturnInvoiceItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="ReturnQty" ColumnName="ReturnQty" />
+          <ScalarProperty Name="OriginalPrice" ColumnName="OriginalPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FK_RetInvoiceID" ColumnName="FK_RetInvoiceID" />
+          <ScalarProperty Name="FK_BundleID" ColumnName="FK_BundleID" />
+          <ScalarProperty Name="FK_ParentID" ColumnName="FK_ParentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptGroups">
+      <EntityTypeMapping TypeName="MLPDB01Model.RptGroup">
+        <MappingFragment StoreEntitySet="RptGroup">
+          <ScalarProperty Name="RptGroupID" ColumnName="RptGroupID" />
+          <ScalarProperty Name="RptGroupName" ColumnName="RptGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SafeLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.SafeLog">
+        <MappingFragment StoreEntitySet="SafeLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_CenterID" ColumnName="FK_CenterID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Timstamp" ColumnName="Timstamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.SalesItem">
+        <MappingFragment StoreEntitySet="SalesItem">
+          <ScalarProperty Name="MobileDisplayOrder" ColumnName="MobileDisplayOrder" />
+          <ScalarProperty Name="FK_SupplierID" ColumnName="FK_SupplierID" />
+          <ScalarProperty Name="LoyaltyPoints" ColumnName="LoyaltyPoints" />
+          <ScalarProperty Name="min" ColumnName="min" />
+          <ScalarProperty Name="max" ColumnName="max" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemNameAr" ColumnName="ItemNameAr" />
+          <ScalarProperty Name="FK_ItemTypeID" ColumnName="FK_ItemTypeID" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="BoxQty" ColumnName="BoxQty" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="FK_CategoryID" ColumnName="FK_CategoryID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Extention" ColumnName="Extention" />
+          <ScalarProperty Name="FK_Category4ID" ColumnName="FK_Category4ID" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="IsMobileProduct" ColumnName="IsMobileProduct" />
+          <ScalarProperty Name="FK_MobileCategoryID" ColumnName="FK_MobileCategoryID" />
+          <ScalarProperty Name="DescriptionHTML" ColumnName="DescriptionHTML" />
+          <ScalarProperty Name="NoOfServiceTimeSlots" ColumnName="NoOfServiceTimeSlots" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesItemCategories">
+      <EntityTypeMapping TypeName="MLPDB01Model.SalesItemCategory">
+        <MappingFragment StoreEntitySet="SalesItemCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryNameAr" ColumnName="CategoryNameAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCenterInventories">
+      <EntityTypeMapping TypeName="MLPDB01Model.ServiceCenterInventory">
+        <MappingFragment StoreEntitySet="ServiceCenterInventory">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCenterSalesItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.ServiceCenterSalesItem">
+        <MappingFragment StoreEntitySet="ServiceCenterSalesItem">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ItemID" ColumnName="FK_ItemID" />
+          <ScalarProperty Name="Threshold" ColumnName="Threshold" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="MaxThreshold" ColumnName="MaxThreshold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubMenuItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.SubMenuItem">
+        <MappingFragment StoreEntitySet="SubMenuItems">
+          <ScalarProperty Name="SubMenuItemID" ColumnName="SubMenuItemID" />
+          <ScalarProperty Name="SubMenuItemName" ColumnName="SubMenuItemName" />
+          <ScalarProperty Name="SubMenuItemUrl" ColumnName="SubMenuItemUrl" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="SubMenuItemNameAR" ColumnName="SubMenuItemNameAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="MLPDB01Model.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="commercialImageName" ColumnName="commercialImageName" />
+          <ScalarProperty Name="commercialCode" ColumnName="commercialCode" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SuppliersName" ColumnName="SuppliersName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+          <ScalarProperty Name="ConatctName" ColumnName="ConatctName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliments">
+      <EntityTypeMapping TypeName="MLPDB01Model.Suppliment">
+        <MappingFragment StoreEntitySet="Suppliment">
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SupplimentNo" ColumnName="SupplimentNo" />
+          <ScalarProperty Name="FK_SupplimentStatusID" ColumnName="FK_SupplimentStatusID" />
+          <ScalarProperty Name="FK_SupplierID" ColumnName="FK_SupplierID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="FK_SysUserID" ColumnName="FK_SysUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="SupplimentDate" ColumnName="SupplimentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplimentItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplimentItem">
+        <MappingFragment StoreEntitySet="SupplimentItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SupplimentID" ColumnName="FK_SupplimentID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplimentStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplimentStatu">
+        <MappingFragment StoreEntitySet="SupplimentStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SupplimentStatus" ColumnName="SupplimentStatus" />
+          <ScalarProperty Name="SupplimentStatusAr" ColumnName="SupplimentStatusAr" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LAstModifiedDate" ColumnName="LAstModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyNotifications">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplyNotification">
+        <MappingFragment StoreEntitySet="SupplyNotification">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NtfMessage" ColumnName="NtfMessage" />
+          <ScalarProperty Name="NtfStatus" ColumnName="NtfStatus" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="Criticality" ColumnName="Criticality" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyNotificationActions">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplyNotificationAction">
+        <MappingFragment StoreEntitySet="SupplyNotificationAction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ActionMessage" ColumnName="ActionMessage" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_SupplyNotificationID" ColumnName="FK_SupplyNotificationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyOrders">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplyOrder">
+        <MappingFragment StoreEntitySet="SupplyOrder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="ServerLastModifiedDate" ColumnName="ServerLastModifiedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+          <ScalarProperty Name="FK_AutReqestNo" ColumnName="FK_AutReqestNo" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_TransferNo" ColumnName="FK_TransferNo" />
+          <ScalarProperty Name="FK_SupplimentNo" ColumnName="FK_SupplimentNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyOrderItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.SupplyOrderItem">
+        <MappingFragment StoreEntitySet="SupplyOrderItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
+          <ScalarProperty Name="FK_SupplyOrderID" ColumnName="FK_SupplyOrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="MLPDB01Model.SystemUser">
+        <MappingFragment StoreEntitySet="SystemUsers">
+          <ScalarProperty Name="FK_UserId" ColumnName="FK_UserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="FK_UserGroupId" ColumnName="FK_UserGroupId" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_LanguageID" ColumnName="FK_LanguageID" />
+          <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempCustomers">
+      <EntityTypeMapping TypeName="MLPDB01Model.TempCustomer">
+        <MappingFragment StoreEntitySet="TempCustomer">
+          <ScalarProperty Name="FK_AreaID" ColumnName="FK_AreaID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeSlots">
+      <EntityTypeMapping TypeName="MLPDB01Model.TimeSlot">
+        <MappingFragment StoreEntitySet="TimeSlots">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferItems">
+      <EntityTypeMapping TypeName="MLPDB01Model.TransferItem">
+        <MappingFragment StoreEntitySet="TransferItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FK_TransferID" ColumnName="FK_TransferID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transfers">
+      <EntityTypeMapping TypeName="MLPDB01Model.Transfer">
+        <MappingFragment StoreEntitySet="Transfers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_ServiceCenterFromID" ColumnName="FK_ServiceCenterFromID" />
+          <ScalarProperty Name="FK_ServiceCenterToID" ColumnName="FK_ServiceCenterToID" />
+          <ScalarProperty Name="FK_TransferTypeID" ColumnName="FK_TransferTypeID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+          <ScalarProperty Name="FK_SysUserID" ColumnName="FK_SysUserID" />
+          <ScalarProperty Name="FK_TransferStatusID" ColumnName="FK_TransferStatusID" />
+          <ScalarProperty Name="TransferNo" ColumnName="TransferNo" />
+          <ScalarProperty Name="FK_RequestNo" ColumnName="FK_RequestNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.TransferStatu">
+        <MappingFragment StoreEntitySet="TransferStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TranStatusName" ColumnName="TranStatusName" />
+          <ScalarProperty Name="TransStatusArName" ColumnName="TransStatusArName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.TransferType">
+        <MappingFragment StoreEntitySet="TransferType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransferTypeName" ColumnName="TransferTypeName" />
+          <ScalarProperty Name="TransferTypeNameAr" ColumnName="TransferTypeNameAr" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MLPDB01Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_LanguageID" ColumnName="FK_LanguageID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroupsPages">
+      <EntityTypeMapping TypeName="MLPDB01Model.UserGroupsPage">
+        <MappingFragment StoreEntitySet="UserGroupsPages">
+          <ScalarProperty Name="UserGroupPagesID" ColumnName="UserGroupPagesID" />
+          <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserServiceCenters">
+      <EntityTypeMapping TypeName="MLPDB01Model.UserServiceCenter">
+        <MappingFragment StoreEntitySet="UserServiceCenter">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersGroups">
+      <EntityTypeMapping TypeName="MLPDB01Model.UsersGroup">
+        <MappingFragment StoreEntitySet="UsersGroups">
+          <ScalarProperty Name="UsersGroupID" ColumnName="UsersGroupID" />
+          <ScalarProperty Name="UserGroupName" ColumnName="UserGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersLogs">
+      <EntityTypeMapping TypeName="MLPDB01Model.UsersLog">
+        <MappingFragment StoreEntitySet="UsersLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingCancelReasons">
+      <EntityTypeMapping TypeName="MLPDB01Model.BookingCancelReason">
+        <MappingFragment StoreEntitySet="BookingCancelReasons">
+          <ScalarProperty Name="NameAr" ColumnName="NameAr" />
+          <ScalarProperty Name="IsMobilePortal" ColumnName="IsMobilePortal" />
+          <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="MLPDB01Model.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PackageDate" ColumnName="PackageDate" />
+          <ScalarProperty Name="PackageHTMLAr" ColumnName="PackageHTMLAr" />
+          <ScalarProperty Name="PackageHTML" ColumnName="PackageHTML" />
+          <ScalarProperty Name="PackageAbtractAr" ColumnName="PackageAbtractAr" />
+          <ScalarProperty Name="PackageAbtract" ColumnName="PackageAbtract" />
+          <ScalarProperty Name="PackageImage" ColumnName="PackageImage" />
+          <ScalarProperty Name="TitleAr" ColumnName="TitleAr" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerNotifications">
+      <EntityTypeMapping TypeName="MLPDB01Model.CustomerNotification">
+        <MappingFragment StoreEntitySet="CustomerNotification">
+          <ScalarProperty Name="IsSeen" ColumnName="IsSeen" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="FK_NotificationID" ColumnName="FK_NotificationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MLPNotifications">
+      <EntityTypeMapping TypeName="MLPDB01Model.MLPNotification">
+        <MappingFragment StoreEntitySet="MLPNotification">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="FK_NotificationTypeID" ColumnName="FK_NotificationTypeID" />
+          <ScalarProperty Name="NotificationView" ColumnName="NotificationView" />
+          <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+          <ScalarProperty Name="NotificationMessage" ColumnName="NotificationMessage" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MLPNotificationTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.MLPNotificationType">
+        <MappingFragment StoreEntitySet="MLPNotificationType">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingStatus">
+      <EntityTypeMapping TypeName="MLPDB01Model.BookingStatu">
+        <MappingFragment StoreEntitySet="BookingStatus">
+          <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="MLPDB01Model.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="FK_BookingStatusID" ColumnName="FK_BookingStatusID" />
+          <ScalarProperty Name="IsUserCancel" ColumnName="IsUserCancel" />
+          <ScalarProperty Name="FK_CancelReasonID" ColumnName="FK_CancelReasonID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="FK_ServiceCenterID" ColumnName="FK_ServiceCenterID" />
+          <ScalarProperty Name="Car_Code" ColumnName="Car_Code" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCenters">
+      <EntityTypeMapping TypeName="MLPDB01Model.ServiceCenter">
+        <MappingFragment StoreEntitySet="ServiceCenter">
+          <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+          <ScalarProperty Name="OpenningDate" ColumnName="OpenningDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsBooking" ColumnName="IsBooking" />
+          <ScalarProperty Name="DescriptionHTMLAR" ColumnName="DescriptionHTMLAR" />
+          <ScalarProperty Name="IsInLoyaltyProgram" ColumnName="IsInLoyaltyProgram" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="NoOfShifts" ColumnName="NoOfShifts" />
+          <ScalarProperty Name="NoOfServicesPerTimeSlot" ColumnName="NoOfServicesPerTimeSlot" />
+          <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+          <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+          <ScalarProperty Name="MapLink" ColumnName="MapLink" />
+          <ScalarProperty Name="SCExpiryDate" ColumnName="SCExpiryDate" />
+          <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+          <ScalarProperty Name="IsCost" ColumnName="IsCost" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="RemainingValue" ColumnName="RemainingValue" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CenterGroup" ColumnName="CenterGroup" />
+          <ScalarProperty Name="DescriptionHTML" ColumnName="DescriptionHTML" />
+          <ScalarProperty Name="POSImage" ColumnName="POSImage" />
+          <ScalarProperty Name="py" ColumnName="py" />
+          <ScalarProperty Name="px" ColumnName="px" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="AreaAr" ColumnName="AreaAr" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="AddressAR" ColumnName="AddressAR" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CenterNameAr" ColumnName="CenterNameAr" />
+          <ScalarProperty Name="CenterName" ColumnName="CenterName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MLPCustomerTokens">
+      <EntityTypeMapping TypeName="MLPDB01Model.MLPCustomerToken">
+        <MappingFragment StoreEntitySet="MLPCustomerToken">
+          <ScalarProperty Name="FireBaseToken" ColumnName="FireBaseToken" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="MLPDB01Model.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="FK_MangerID" ColumnName="FK_MangerID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="AreaNameAR" ColumnName="AreaNameAR" />
+          <ScalarProperty Name="AreaNameEN" ColumnName="AreaNameEN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarBrands">
+      <EntityTypeMapping TypeName="MLPDB01Model.CarBrand">
+        <MappingFragment StoreEntitySet="CarBrand">
+          <ScalarProperty Name="BrandNameAR" ColumnName="BrandNameAR" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarModels">
+      <EntityTypeMapping TypeName="MLPDB01Model.CarModel">
+        <MappingFragment StoreEntitySet="CarModel">
+          <ScalarProperty Name="FK_BrandID" ColumnName="FK_BrandID" />
+          <ScalarProperty Name="ModelNameAR" ColumnName="ModelNameAR" />
+          <ScalarProperty Name="ModeName" ColumnName="ModeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contracts">
+      <EntityTypeMapping TypeName="MLPDB01Model.Contract">
+        <MappingFragment StoreEntitySet="Contract">
+          <ScalarProperty Name="InLoyalty" ColumnName="InLoyalty" />
+          <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+          <ScalarProperty Name="CorporateAr" ColumnName="CorporateAr" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="ContractEndDate" ColumnName="ContractEndDate" />
+          <ScalarProperty Name="ContractStartDate" ColumnName="ContractStartDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Corporate" ColumnName="Corporate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContractCars">
+      <EntityTypeMapping TypeName="MLPDB01Model.ContractCar">
+        <MappingFragment StoreEntitySet="ContractCar">
+          <ScalarProperty Name="CreatorType" ColumnName="CreatorType" />
+          <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="CarCode" ColumnName="CarCode" />
+          <ScalarProperty Name="FK_ContractID" ColumnName="FK_ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContractPriceLists">
+      <EntityTypeMapping TypeName="MLPDB01Model.ContractPriceList">
+        <MappingFragment StoreEntitySet="ContractPriceList">
+          <ScalarProperty Name="Vat" ColumnName="Vat" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FK_SalesItemID" ColumnName="FK_SalesItemID" />
+          <ScalarProperty Name="FK_ContractID" ColumnName="FK_ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContractUsers">
+      <EntityTypeMapping TypeName="MLPDB01Model.ContractUser">
+        <MappingFragment StoreEntitySet="ContractUsers">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_ContractID" ColumnName="FK_ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EngineTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.EngineType">
+        <MappingFragment StoreEntitySet="EngineType">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="Type_NameAr" ColumnName="Type_NameAr" />
+          <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
+          <ScalarProperty Name="Engine_ID" ColumnName="Engine_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MLPSMSConfirmations">
+      <EntityTypeMapping TypeName="MLPDB01Model.MLPSMSConfirmation">
+        <MappingFragment StoreEntitySet="MLPSMSConfirmation">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastModificationDate" ColumnName="LastModificationDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UpLevelMS" ColumnName="UpLevelMS" />
+          <ScalarProperty Name="MobilOilMS" ColumnName="MobilOilMS" />
+          <ScalarProperty Name="FirstLoginMS" ColumnName="FirstLoginMS" />
+          <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomersClearNotifications">
+      <EntityTypeMapping TypeName="MLPDB01Model.CustomersClearNotification">
+        <MappingFragment StoreEntitySet="CustomersClearNotifications">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Cleardate" ColumnName="Cleardate" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurvayAnswers">
+      <EntityTypeMapping TypeName="MLPDB01Model.SurvayAnswer">
+        <MappingFragment StoreEntitySet="SurvayAnswers">
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="AnswerDate" ColumnName="AnswerDate" />
+          <ScalarProperty Name="AnswerTxtValue" ColumnName="AnswerTxtValue" />
+          <ScalarProperty Name="AnswerValue" ColumnName="AnswerValue" />
+          <ScalarProperty Name="FK_QuestionID" ColumnName="FK_QuestionID" />
+          <ScalarProperty Name="FK_EvaluaionID" ColumnName="FK_EvaluaionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurvayEvaluations">
+      <EntityTypeMapping TypeName="MLPDB01Model.SurvayEvaluation">
+        <MappingFragment StoreEntitySet="SurvayEvaluation">
+          <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+          <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+          <ScalarProperty Name="EvaluationTime" ColumnName="EvaluationTime" />
+          <ScalarProperty Name="EvaluationDate" ColumnName="EvaluationDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="TypeOfCar" ColumnName="TypeOfCar" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurvayQuestions">
+      <EntityTypeMapping TypeName="MLPDB01Model.SurvayQuestion">
+        <MappingFragment StoreEntitySet="SurvayQuestions">
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="QuestionDescription" ColumnName="QuestionDescription" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurvayMultiChooses">
+      <EntityTypeMapping TypeName="MLPDB01Model.SurvayMultiChoose">
+        <MappingFragment StoreEntitySet="SurvayMultiChoose">
+          <ScalarProperty Name="FK_QusetionID" ColumnName="FK_QusetionID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ChooseGroup" ColumnName="ChooseGroup" />
+          <ScalarProperty Name="ChooseTextField" ColumnName="ChooseTextField" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Advertisements">
+      <EntityTypeMapping TypeName="MLPDB01Model.Advertisement">
+        <MappingFragment StoreEntitySet="Advertisements">
+          <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+          <ScalarProperty Name="Lastmodifieddate" ColumnName="Lastmodifieddate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AdsOrder" ColumnName="AdsOrder" />
+          <ScalarProperty Name="Imagename" ColumnName="Imagename" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlForsanRedemptions">
+      <EntityTypeMapping TypeName="MLPDB01Model.AlForsanRedemption">
+        <MappingFragment StoreEntitySet="AlForsanRedemption">
+          <ScalarProperty Name="FK_RedemptionRequest" ColumnName="FK_RedemptionRequest" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="FK_ReviwedBy" ColumnName="FK_ReviwedBy" />
+          <ScalarProperty Name="RedeemMiles" ColumnName="RedeemMiles" />
+          <ScalarProperty Name="MembershipNumber" ColumnName="MembershipNumber" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AwardsTypes">
+      <EntityTypeMapping TypeName="MLPDB01Model.AwardsType">
+        <MappingFragment StoreEntitySet="AwardsTypes">
+          <ScalarProperty Name="AwardType" ColumnName="AwardType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

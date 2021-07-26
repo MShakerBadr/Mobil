@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MLP.Web.UI.Models.RedeemViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped order-column">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Award)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCenter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RedeemDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RedeemPoints)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceCenter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RedeemDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RedeemPoints)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

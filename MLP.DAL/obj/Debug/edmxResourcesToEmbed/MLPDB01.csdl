@@ -1,0 +1,2550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MLPDB01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfigurationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigurationValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigurationUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AdminSetting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PointsExpiryDays" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Auditing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuditingDate" Type="DateTime" Precision="3" />
+    <Property Name="Fk_ServiceCenterID" Type="Int32" />
+    <Property Name="FK_DocStatusID" Type="Int32" />
+    <Property Name="FK_SysUserID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AuditingItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_AuditingID" Type="Int32" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="InventoryQuantity" Type="Int32" />
+    <Property Name="DifferenceQuantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="AutomatedRequest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AutRequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CenterID" Type="Int32" />
+    <Property Name="FK_StatusID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="FK_ManagerID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Award">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="AwardImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="FK_LevelID" Type="Int32" />
+    <Property Name="AwardDuePoints" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="RedemptionRequests" Relationship="Self.FK_RedemptionRequests_Awards" FromRole="Awards" ToRole="RedemptionRequests" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaxDiscountValue" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaxRedeemCount" Type="Int32" />
+    <Property Name="FK_AwardTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AwardsType" Relationship="MLPDB01Model.FK_Awards_AwardsTypes" FromRole="Award" ToRole="AwardsType" />
+  </EntityType>
+  <EntityType Name="BookingService">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ServiceID" Type="Int32" />
+    <Property Name="FK_BookingID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="BookingTimeSlot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_TimeSlotID" Type="Int32" />
+    <Property Name="FK_BookingID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Bundle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BundleName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BundleNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="BundlePrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BundleItems" Relationship="Self.FK_BundleItems_Bundle" FromRole="Bundle" ToRole="BundleItems" />
+    <NavigationProperty Name="POSInvoiceItems" Relationship="Self.FK_POSInvoiceItem_Bundle" FromRole="Bundle" ToRole="POSInvoiceItem" />
+  </EntityType>
+  <EntityType Name="BundleItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="BundleItemPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BundleItemQuantity" Type="Int32" />
+    <Property Name="FK_BundleID" Type="Int32" />
+    <NavigationProperty Name="Bundle" Relationship="Self.FK_BundleItems_Bundle" FromRole="BundleItems" ToRole="Bundle" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_BundleItems_SalesItem" FromRole="BundleItems" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="Category1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category1Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category1NameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category2Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category2NameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_Category1ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category3">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category3Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category3NameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_Category2ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category4">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category4Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category4NameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_Category3ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CityNameAR" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FK_RegionIID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Region" Relationship="Self.FK_City_Region" FromRole="City" ToRole="Region" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_City" FromRole="City" ToRole="Customer" />
+    <NavigationProperty Name="ServiceCenters" Relationship="MLPDB01Model.FK_ServiceCenter_City" FromRole="City" ToRole="ServiceCenter" />
+    <NavigationProperty Name="Areas" Relationship="MLPDB01Model.FK_Area_City" FromRole="City" ToRole="Area" />
+  </EntityType>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfirmationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SendingDate" Type="DateTime" Precision="3" />
+    <Property Name="AmountRequired" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ActualAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="CollectorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="CollectionDate" Type="DateTime" Precision="3" />
+    <Property Name="IsCollected" Type="Boolean" Nullable="false" />
+    <Property Name="HasProblem" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Collector">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="ColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CollectorsDailyCodes" Relationship="Self.FK_CollectionRequest_Collector" FromRole="Collector" ToRole="CollectorsDailyCode" />
+  </EntityType>
+  <EntityType Name="CollectorsDailyCode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeDate" Type="DateTime" Precision="3" />
+    <Property Name="CollectorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CollectorID" Type="Int32" />
+    <Property Name="CollectionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Collector" Relationship="Self.FK_CollectionRequest_Collector" FromRole="CollectorsDailyCode" ToRole="Collector" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerSCID" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_CityID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ServerLastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMobileUser" Type="Boolean" />
+    <Property Name="FK_LatestLevelID" Type="Int32" />
+    <Property Name="CurrentPoints" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Customer_City" FromRole="Customer" ToRole="City" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
+    <NavigationProperty Name="LoginLogs" Relationship="Self.FK_LoginLog_Customer" FromRole="Customer" ToRole="LoginLog" />
+    <NavigationProperty Name="RedemptionRequests" Relationship="Self.FK_RedemptionRequests_Customer" FromRole="Customer" ToRole="RedemptionRequests" />
+    <NavigationProperty Name="CustomerNotifications" Relationship="MLPDB01Model.FK_CustomerNotification_Customer" FromRole="Customer" ToRole="CustomerNotification" />
+    <Property Name="IsFristlogin" Type="Boolean" Nullable="false" />
+    <Property Name="FK_AreaID" Type="Int32" />
+    <Property Name="NoOfPoints" Type="Int32" />
+    <Property Name="FirstLoginDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Area1" Relationship="MLPDB01Model.FK_Customer_Area" FromRole="Customer" ToRole="Area" />
+    <Property Name="ConfirmationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlfursanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomersCarNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Car_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_Engine_Type" Type="Int32" />
+    <NavigationProperty Name="EngineType" Relationship="MLPDB01Model.FK_CustomersCarNumbers_EngineType" FromRole="CustomersCarNumber" ToRole="EngineType" />
+  </EntityType>
+  <EntityType Name="DailyReportsLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="DateTime" Precision="3" />
+    <Property Name="IsSent" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DashBoardChart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChartName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChartNameAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChartType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SP_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SP_Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DocStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocStatusNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="InvoicePayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_PaymentTypeID" Type="Int32" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FK_InvoiceID" Type="Int32" />
+    <Property Name="FK_InvoiceTypeID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="InvoiceType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceTypeAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ItemType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemTypeNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItem_ItemType" FromRole="ItemType" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LanguageArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LanguageEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Language" FromRole="Language" ToRole="User" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_LoginLog_Customer" FromRole="LoginLog" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="LoyaltyLevel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LevelEng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LevelAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfVisits" Type="Int32" />
+    <Property Name="DuePoints" Type="Int32" />
+    <Property Name="PointsPerSAR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FromPoints" Type="Int32" />
+    <Property Name="ToPoints" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MenuItem">
+    <Key>
+      <PropertyRef Name="MenuItemID" />
+    </Key>
+    <Property Name="MenuItemID" Type="Int32" Nullable="false" />
+    <Property Name="MenuItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MenuItemDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NavigationUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="MenuItemNameAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MenuSubMenuItem">
+    <Key>
+      <PropertyRef Name="MenuSubMenuItemID" />
+    </Key>
+    <Property Name="MenuSubMenuItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_MenuItemID" Type="Int32" />
+    <Property Name="FK_SubMenuItemID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MessageComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MessageDate" Type="DateTime" Precision="3" />
+    <Property Name="MessageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_SenderID" Type="Int32" />
+    <Property Name="FK_MessageThreadID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="MessageThread">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThreadTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CustomerID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="MobileCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCategoryAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SalesItems" Relationship="MLPDB01Model.FK_SalesItem_MobileCategory" FromRole="MobileCategory" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="MobileDailyReport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CCMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BCCMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsAbtract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsAbtractAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsHTMLAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="NotificationMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_NotificationMessages" FromRole="NotificationMessages" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Message" Type="Int32" />
+    <Property Name="FK_CenterID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_Status" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NotificationMessage" Relationship="Self.FK_Notifications_NotificationMessages" FromRole="Notifications" ToRole="NotificationMessages" />
+    <NavigationProperty Name="NotificationsStatu" Relationship="Self.FK_Notifications_NotificationsStatus" FromRole="Notifications" ToRole="NotificationsStatus" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Notifications_User" FromRole="Notifications" ToRole="User" />
+    <NavigationProperty Name="ServiceCenter" Relationship="MLPDB01Model.FK_Notifications_ServiceCenter" FromRole="Notification" ToRole="ServiceCenter" />
+  </EntityType>
+  <EntityType Name="NotificationsStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_NotificationsStatus" FromRole="NotificationsStatus" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentTypeNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Point">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillPoints" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SARPoints" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FirstTimePoints" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="Validity" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PointsReason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ReasonID" Type="Int32" />
+    <Property Name="NoOfPoints" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsOnce" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Reason" Relationship="Self.FK_PointsReason_Reason" FromRole="PointsReason" ToRole="Reason" />
+    <NavigationProperty Name="PointsReasonsProducts" Relationship="Self.FK_PointsReasonsProducts_PointsReason" FromRole="PointsReason" ToRole="PointsReasonsProducts" />
+    <NavigationProperty Name="PointsReasonsSCenters" Relationship="Self.FK_PointsReasonsSCenters_PointsReason" FromRole="PointsReason" ToRole="PointsReasonsSCenters" />
+  </EntityType>
+  <EntityType Name="PointsReasonsProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_PointsReasonID" Type="Int32" />
+    <Property Name="FK_ProductID" Type="Int32" />
+    <NavigationProperty Name="PointsReason" Relationship="Self.FK_PointsReasonsProducts_PointsReason" FromRole="PointsReasonsProducts" ToRole="PointsReason" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_PointsReasonsProducts_SalesItem" FromRole="PointsReasonsProducts" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="PointsReasonsSCenter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_PointsReasonsID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <NavigationProperty Name="PointsReason" Relationship="Self.FK_PointsReasonsSCenters_PointsReason" FromRole="PointsReasonsSCenters" ToRole="PointsReason" />
+    <NavigationProperty Name="ServiceCenter" Relationship="MLPDB01Model.FK_PointsReasonsSCenters_PointsReasonsSCenters" FromRole="PointsReasonsSCenter" ToRole="ServiceCenter" />
+  </EntityType>
+  <EntityType Name="POSConnectionLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="SourceIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_POSConnectionLog_User" FromRole="POSConnectionLog" ToRole="User" />
+  </EntityType>
+  <EntityType Name="POSInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="VisaLastDigits" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ServerLastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NextVisit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoyaltyPoints" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_POSInvoice_User" FromRole="POSInvoice" ToRole="User" />
+    <NavigationProperty Name="POSInvoiceItems" Relationship="Self.FK_POSInvoiceItem_POSInvoice" FromRole="POSInvoice" ToRole="POSInvoiceItem" />
+    <Property Name="Vat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VatPercent" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="TotalWithVat" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="POSInvoiceItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="OriginalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FK_InvoiceID" Type="Int32" />
+    <Property Name="FK_BundleID" Type="Int32" />
+    <Property Name="FK_ParentID" Type="Int32" />
+    <NavigationProperty Name="Bundle" Relationship="Self.FK_POSInvoiceItem_Bundle" FromRole="POSInvoiceItem" ToRole="Bundle" />
+    <NavigationProperty Name="POSInvoice" Relationship="Self.FK_POSInvoiceItem_POSInvoice" FromRole="POSInvoiceItem" ToRole="POSInvoice" />
+    <NavigationProperty Name="POSInvoiceItem1" Relationship="Self.FK_POSInvoiceItem_POSInvoiceItem" FromRole="POSInvoiceItem" ToRole="POSInvoiceItem1" />
+    <NavigationProperty Name="POSInvoiceItem2" Relationship="Self.FK_POSInvoiceItem_POSInvoiceItem" FromRole="POSInvoiceItem1" ToRole="POSInvoiceItem" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_POSInvoiceItem_SalesItem" FromRole="POSInvoiceItem" ToRole="SalesItem" />
+    <Property Name="LoyaltyPoints" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PosReport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReportNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SP_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SP_Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Promotion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DescAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="OriginalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Reason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reason1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PointsReasons" Relationship="Self.FK_PointsReason_Reason" FromRole="Reason" ToRole="PointsReason" />
+  </EntityType>
+  <EntityType Name="RedemptionRequest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CustomerID" Type="Int32" />
+    <Property Name="FK_AwardID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="RedeemDate" Type="DateTime" Precision="3" />
+    <Property Name="RedeemPoints" Type="Int32" />
+    <Property Name="CustomerConfirmCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RedemptionConfirmCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="POSCreatorCodeID" Type="Int32" />
+    <Property Name="FK_RedeemStatusID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Award" Relationship="Self.FK_RedemptionRequests_Awards" FromRole="RedemptionRequests" ToRole="Awards" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_RedemptionRequests_Customer" FromRole="RedemptionRequests" ToRole="Customer" />
+    <NavigationProperty Name="RedemptionStatu" Relationship="Self.FK_RedemptionRequests_RedemptionStatus" FromRole="RedemptionRequests" ToRole="RedemptionStatus" />
+    <NavigationProperty Name="ServiceCenter" Relationship="MLPDB01Model.FK_RedemptionRequests_ServiceCenter" FromRole="RedemptionRequest" ToRole="ServiceCenter" />
+    <NavigationProperty Name="AlForsanRedemptions" Relationship="MLPDB01Model.FK_AlForsanRedemption_RedemptionRequests" FromRole="RedemptionRequest" ToRole="AlForsanRedemption" />
+  </EntityType>
+  <EntityType Name="RedemptionStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RedemptionRequests" Relationship="Self.FK_RedemptionRequests_RedemptionStatus" FromRole="RedemptionStatus" ToRole="RedemptionRequests" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegionNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_City_Region" FromRole="Region" ToRole="City" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="RptID" />
+    </Key>
+    <Property Name="RptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RptName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RptSPName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fk_RptGroupID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsAdvanced" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="RequestItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_RequestItem_SalesItem" FromRole="RequestItem" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="RequestOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CenterID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_StatusID" Type="Int32" />
+    <Property Name="FK_RequestType" Type="Int32" />
+    <Property Name="FK_ManagerID" Type="Int32" />
+    <Property Name="RequestDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RequestsLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" Nullable="false" />
+    <Property Name="FK_ItemID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="ActionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RequestStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ArStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RequestType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="RequestTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ARRequestTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ReturnInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnInvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalRetAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ReturnInvoiceItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="ReturnQty" Type="Int32" />
+    <Property Name="OriginalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FK_RetInvoiceID" Type="Int32" />
+    <Property Name="FK_BundleID" Type="Int32" />
+    <Property Name="FK_ParentID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RptGroup">
+    <Key>
+      <PropertyRef Name="RptGroupID" />
+    </Key>
+    <Property Name="RptGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RptGroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SafeLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CenterID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Timstamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SalesItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ItemNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_ItemTypeID" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BoxQty" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CategoryID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Extention" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_Category4ID" Type="Int32" />
+    <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMobileProduct" Type="Boolean" Nullable="false" />
+    <Property Name="FK_MobileCategoryID" Type="Int32" />
+    <Property Name="DescriptionHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfServiceTimeSlots" Type="Int32" />
+    <NavigationProperty Name="BundleItems" Relationship="Self.FK_BundleItems_SalesItem" FromRole="SalesItem" ToRole="BundleItems" />
+    <NavigationProperty Name="ItemType" Relationship="Self.FK_SalesItem_ItemType" FromRole="SalesItem" ToRole="ItemType" />
+    <NavigationProperty Name="PointsReasonsProducts" Relationship="Self.FK_PointsReasonsProducts_SalesItem" FromRole="SalesItem" ToRole="PointsReasonsProducts" />
+    <NavigationProperty Name="POSInvoiceItems" Relationship="Self.FK_POSInvoiceItem_SalesItem" FromRole="SalesItem" ToRole="POSInvoiceItem" />
+    <NavigationProperty Name="RequestItems" Relationship="Self.FK_RequestItem_SalesItem" FromRole="SalesItem" ToRole="RequestItem" />
+    <NavigationProperty Name="SalesItemCategory" Relationship="Self.FK_SalesItem_SalesItemCategory" FromRole="SalesItem" ToRole="SalesItemCategory" />
+    <NavigationProperty Name="ServiceCenterInventories" Relationship="Self.FK_ServiceCenterInventory_SalesItem" FromRole="SalesItem" ToRole="ServiceCenterInventory" />
+    <NavigationProperty Name="ServiceCenterSalesItems" Relationship="Self.FK_ServiceCenterSalesItem_SalesItem" FromRole="SalesItem" ToRole="ServiceCenterSalesItem" />
+    <NavigationProperty Name="SupplyOrderItems" Relationship="Self.FK_SupplyOrderItem_SalesItem" FromRole="SalesItem" ToRole="SupplyOrderItem" />
+    <NavigationProperty Name="MobileCategory" Relationship="MLPDB01Model.FK_SalesItem_MobileCategory" FromRole="SalesItem" ToRole="MobileCategory" />
+    <Property Name="max" Type="Int32" />
+    <Property Name="min" Type="Int32" />
+    <Property Name="LoyaltyPoints" Type="Int32" Nullable="false" />
+    <Property Name="FK_SupplierID" Type="Int32" />
+    <Property Name="MobileDisplayOrder" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SalesItemCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItem_SalesItemCategory" FromRole="SalesItemCategory" ToRole="SalesItem" />
+  </EntityType>
+  <EntityType Name="ServiceCenterInventory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_ServiceCenterInventory_SalesItem" FromRole="ServiceCenterInventory" ToRole="SalesItem" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ServiceCenterSalesItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ItemID" Type="Int32" />
+    <Property Name="Threshold" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="MaxThreshold" Type="Int32" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_ServiceCenterSalesItem_SalesItem" FromRole="ServiceCenterSalesItem" ToRole="SalesItem" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubMenuItem">
+    <Key>
+      <PropertyRef Name="SubMenuItemID" />
+    </Key>
+    <Property Name="SubMenuItemID" Type="Int32" Nullable="false" />
+    <Property Name="SubMenuItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubMenuItemUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="SubMenuItemNameAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuppliersName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SupplierAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ConatctName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="commercialCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="commercialImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Suppliment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplimentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_SupplimentStatusID" Type="Int32" />
+    <Property Name="FK_SupplierID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="FK_SysUserID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SupplimentDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SupplimentItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SupplimentID" Type="Int32" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="SupplimentStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplimentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SupplimentStatusAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LAstModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SupplyNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NtfMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NtfStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Criticality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_SupplyNotification_User" FromRole="SupplyNotification" ToRole="User" />
+    <NavigationProperty Name="SupplyNotificationActions" Relationship="Self.FK_SupplyNotificationAction_SupplyNotification" FromRole="SupplyNotification" ToRole="SupplyNotificationAction" />
+    <NavigationProperty Name="ServiceCenter" Relationship="MLPDB01Model.FK_SupplyNotification_ServiceCenter" FromRole="SupplyNotification" ToRole="ServiceCenter" />
+  </EntityType>
+  <EntityType Name="SupplyNotificationAction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ActionDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPublic" Type="Boolean" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_SupplyNotificationID" Type="Int32" />
+    <NavigationProperty Name="SupplyNotification" Relationship="Self.FK_SupplyNotificationAction_SupplyNotification" FromRole="SupplyNotificationAction" ToRole="SupplyNotification" />
+    <NavigationProperty Name="User" Relationship="Self.FK_SupplyNotificationAction_User" FromRole="SupplyNotificationAction" ToRole="User" />
+  </EntityType>
+  <EntityType Name="SupplyOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServerLastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_AutReqestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_TransferNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_SupplimentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SupplyOrderItems" Relationship="Self.FK_SupplyOrderItem_SupplyOrder" FromRole="SupplyOrder" ToRole="SupplyOrderItem" />
+  </EntityType>
+  <EntityType Name="SupplyOrderItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="ItemCost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FK_SupplyOrderID" Type="Int32" />
+    <NavigationProperty Name="SalesItem" Relationship="Self.FK_SupplyOrderItem_SalesItem" FromRole="SupplyOrderItem" ToRole="SalesItem" />
+    <NavigationProperty Name="SupplyOrder" Relationship="Self.FK_SupplyOrderItem_SupplyOrder" FromRole="SupplyOrderItem" ToRole="SupplyOrder" />
+  </EntityType>
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_UserGroupId" Type="Int32" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsSuper" Type="Boolean" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="FK_LanguageID" Type="Int32" />
+    <Property Name="UserImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_UserId" Type="Int32" />
+    <NavigationProperty Name="Advertisements" Relationship="MLPDB01Model.FK_Advertisements_SystemUsers" FromRole="SystemUser" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="TempCustomer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_CityID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_AreaID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TimeSlot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="EndTime" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="TransferItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="FK_TransferID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Transfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ServiceCenterFromID" Type="Int32" />
+    <Property Name="FK_ServiceCenterToID" Type="Int32" />
+    <Property Name="FK_TransferTypeID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="TransferDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_SysUserID" Type="Int32" />
+    <Property Name="FK_TransferStatusID" Type="Int32" />
+    <Property Name="TransferNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TransferStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TranStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransStatusArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TransferType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransferTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransferTypeNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="FK_LanguageID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_User" FromRole="User" ToRole="Customer" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_User_Language" FromRole="User" ToRole="Language" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_User" FromRole="User" ToRole="Notifications" />
+    <NavigationProperty Name="POSConnectionLogs" Relationship="Self.FK_POSConnectionLog_User" FromRole="User" ToRole="POSConnectionLog" />
+    <NavigationProperty Name="POSInvoices" Relationship="Self.FK_POSInvoice_User" FromRole="User" ToRole="POSInvoice" />
+    <NavigationProperty Name="SupplyNotifications" Relationship="Self.FK_SupplyNotification_User" FromRole="User" ToRole="SupplyNotification" />
+    <NavigationProperty Name="SupplyNotificationActions" Relationship="Self.FK_SupplyNotificationAction_User" FromRole="User" ToRole="SupplyNotificationAction" />
+    <NavigationProperty Name="ContractUsers" Relationship="MLPDB01Model.FK_ContractUsers_User" FromRole="User" ToRole="ContractUser" />
+  </EntityType>
+  <EntityType Name="UserGroupsPage">
+    <Key>
+      <PropertyRef Name="UserGroupPagesID" />
+    </Key>
+    <Property Name="UserGroupPagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserGroupID" Type="Int32" Nullable="false" />
+    <Property Name="PageID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserServiceCenter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UsersGroup">
+    <Key>
+      <PropertyRef Name="UsersGroupID" />
+    </Key>
+    <Property Name="UsersGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LoginTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_RedemptionRequests_Awards">
+    <End Role="Awards" Type="Self.Award" Multiplicity="0..1" />
+    <End Role="RedemptionRequests" Type="Self.RedemptionRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Awards">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RedemptionRequests">
+        <PropertyRef Name="FK_AwardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BundleItems_Bundle">
+    <End Role="Bundle" Type="Self.Bundle" Multiplicity="0..1" />
+    <End Role="BundleItems" Type="Self.BundleItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bundle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BundleItems">
+        <PropertyRef Name="FK_BundleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSInvoiceItem_Bundle">
+    <End Role="Bundle" Type="Self.Bundle" Multiplicity="0..1" />
+    <End Role="POSInvoiceItem" Type="Self.POSInvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bundle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSInvoiceItem">
+        <PropertyRef Name="FK_BundleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BundleItems_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="BundleItems" Type="Self.BundleItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BundleItems">
+        <PropertyRef Name="FK_SalesItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_Region">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="FK_RegionIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="FK_CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectionRequest_Collector">
+    <End Role="Collector" Type="Self.Collector" Multiplicity="0..1" />
+    <End Role="CollectorsDailyCode" Type="Self.CollectorsDailyCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collector">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollectorsDailyCode">
+        <PropertyRef Name="FK_CollectorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginLog_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="LoginLog" Type="Self.LoginLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="FK_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RedemptionRequests_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="RedemptionRequests" Type="Self.RedemptionRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RedemptionRequests">
+        <PropertyRef Name="FK_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesItem_ItemType">
+    <End Role="ItemType" Type="Self.ItemType" Multiplicity="0..1" />
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesItem">
+        <PropertyRef Name="FK_ItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="FK_LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_NotificationMessages">
+    <End Role="NotificationMessages" Type="Self.NotificationMessage" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotificationMessages">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="FK_Message" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_NotificationsStatus">
+    <End Role="NotificationsStatus" Type="Self.NotificationsStatu" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotificationsStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="FK_Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsReason_Reason">
+    <End Role="Reason" Type="Self.Reason" Multiplicity="0..1" />
+    <End Role="PointsReason" Type="Self.PointsReason" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PointsReason">
+        <PropertyRef Name="FK_ReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsReasonsProducts_PointsReason">
+    <End Role="PointsReason" Type="Self.PointsReason" Multiplicity="0..1" />
+    <End Role="PointsReasonsProducts" Type="Self.PointsReasonsProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PointsReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PointsReasonsProducts">
+        <PropertyRef Name="FK_PointsReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsReasonsSCenters_PointsReason">
+    <End Role="PointsReason" Type="Self.PointsReason" Multiplicity="0..1" />
+    <End Role="PointsReasonsSCenters" Type="Self.PointsReasonsSCenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PointsReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PointsReasonsSCenters">
+        <PropertyRef Name="FK_PointsReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsReasonsProducts_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="PointsReasonsProducts" Type="Self.PointsReasonsProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PointsReasonsProducts">
+        <PropertyRef Name="FK_ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSConnectionLog_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="POSConnectionLog" Type="Self.POSConnectionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSConnectionLog">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSInvoice_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="POSInvoice" Type="Self.POSInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSInvoice">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSInvoiceItem_POSInvoice">
+    <End Role="POSInvoice" Type="Self.POSInvoice" Multiplicity="0..1" />
+    <End Role="POSInvoiceItem" Type="Self.POSInvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POSInvoice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSInvoiceItem">
+        <PropertyRef Name="FK_InvoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSInvoiceItem_POSInvoiceItem">
+    <End Role="POSInvoiceItem" Type="Self.POSInvoiceItem" Multiplicity="0..1" />
+    <End Role="POSInvoiceItem1" Type="Self.POSInvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POSInvoiceItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSInvoiceItem1">
+        <PropertyRef Name="FK_ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSInvoiceItem_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="POSInvoiceItem" Type="Self.POSInvoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POSInvoiceItem">
+        <PropertyRef Name="FK_SalesItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RedemptionRequests_RedemptionStatus">
+    <End Role="RedemptionStatus" Type="Self.RedemptionStatu" Multiplicity="0..1" />
+    <End Role="RedemptionRequests" Type="Self.RedemptionRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RedemptionStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RedemptionRequests">
+        <PropertyRef Name="FK_RedeemStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestItem_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="RequestItem" Type="Self.RequestItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RequestItem">
+        <PropertyRef Name="FK_SalesItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesItem_SalesItemCategory">
+    <End Role="SalesItemCategory" Type="Self.SalesItemCategory" Multiplicity="0..1" />
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItemCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesItem">
+        <PropertyRef Name="FK_CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceCenterInventory_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="ServiceCenterInventory" Type="Self.ServiceCenterInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServiceCenterInventory">
+        <PropertyRef Name="FK_SalesItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceCenterSalesItem_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="ServiceCenterSalesItem" Type="Self.ServiceCenterSalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServiceCenterSalesItem">
+        <PropertyRef Name="FK_ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyOrderItem_SalesItem">
+    <End Role="SalesItem" Type="Self.SalesItem" Multiplicity="0..1" />
+    <End Role="SupplyOrderItem" Type="Self.SupplyOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyOrderItem">
+        <PropertyRef Name="FK_SalesItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyNotification_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="SupplyNotification" Type="Self.SupplyNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyNotification">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyNotificationAction_SupplyNotification">
+    <End Role="SupplyNotification" Type="Self.SupplyNotification" Multiplicity="0..1" />
+    <End Role="SupplyNotificationAction" Type="Self.SupplyNotificationAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplyNotification">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyNotificationAction">
+        <PropertyRef Name="FK_SupplyNotificationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyNotificationAction_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="SupplyNotificationAction" Type="Self.SupplyNotificationAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyNotificationAction">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyOrderItem_SupplyOrder">
+    <End Role="SupplyOrder" Type="Self.SupplyOrder" Multiplicity="0..1" />
+    <End Role="SupplyOrderItem" Type="Self.SupplyOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplyOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyOrderItem">
+        <PropertyRef Name="FK_SupplyOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MLPDB01Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminConfigurations" EntityType="Self.AdminConfiguration" />
+    <EntitySet Name="AdminSettings" EntityType="Self.AdminSetting" />
+    <EntitySet Name="Auditings" EntityType="Self.Auditing" />
+    <EntitySet Name="AuditingItems" EntityType="Self.AuditingItem" />
+    <EntitySet Name="AutomatedRequests" EntityType="Self.AutomatedRequest" />
+    <EntitySet Name="Awards" EntityType="Self.Award" />
+    <EntitySet Name="BookingServices" EntityType="Self.BookingService" />
+    <EntitySet Name="BookingTimeSlots" EntityType="Self.BookingTimeSlot" />
+    <EntitySet Name="Bundles" EntityType="Self.Bundle" />
+    <EntitySet Name="BundleItems" EntityType="Self.BundleItem" />
+    <EntitySet Name="Category1" EntityType="Self.Category1" />
+    <EntitySet Name="Category2" EntityType="Self.Category2" />
+    <EntitySet Name="Category3" EntityType="Self.Category3" />
+    <EntitySet Name="Category4" EntityType="Self.Category4" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Collections" EntityType="Self.Collection" />
+    <EntitySet Name="Collectors" EntityType="Self.Collector" />
+    <EntitySet Name="CollectorsDailyCodes" EntityType="Self.CollectorsDailyCode" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="CustomersCarNumbers" EntityType="Self.CustomersCarNumber" />
+    <EntitySet Name="DailyReportsLogs" EntityType="Self.DailyReportsLog" />
+    <EntitySet Name="DashBoardCharts" EntityType="Self.DashBoardChart" />
+    <EntitySet Name="DocStatus" EntityType="Self.DocStatu" />
+    <EntitySet Name="InvoicePayments" EntityType="Self.InvoicePayment" />
+    <EntitySet Name="InvoiceTypes" EntityType="Self.InvoiceType" />
+    <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="LoginLogs" EntityType="Self.LoginLog" />
+    <EntitySet Name="LoyaltyLevels" EntityType="Self.LoyaltyLevel" />
+    <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
+    <EntitySet Name="MenuSubMenuItems" EntityType="Self.MenuSubMenuItem" />
+    <EntitySet Name="MessageComments" EntityType="Self.MessageComment" />
+    <EntitySet Name="MessageThreads" EntityType="Self.MessageThread" />
+    <EntitySet Name="MobileCategories" EntityType="Self.MobileCategory" />
+    <EntitySet Name="MobileDailyReports" EntityType="Self.MobileDailyReport" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="NotificationMessages" EntityType="Self.NotificationMessage" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="NotificationsStatus" EntityType="Self.NotificationsStatu" />
+    <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+    <EntitySet Name="Points" EntityType="Self.Point" />
+    <EntitySet Name="PointsReasons" EntityType="Self.PointsReason" />
+    <EntitySet Name="PointsReasonsProducts" EntityType="Self.PointsReasonsProduct" />
+    <EntitySet Name="PointsReasonsSCenters" EntityType="Self.PointsReasonsSCenter" />
+    <EntitySet Name="POSConnectionLogs" EntityType="Self.POSConnectionLog" />
+    <EntitySet Name="POSInvoices" EntityType="Self.POSInvoice" />
+    <EntitySet Name="POSInvoiceItems" EntityType="Self.POSInvoiceItem" />
+    <EntitySet Name="PosReports" EntityType="Self.PosReport" />
+    <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+    <EntitySet Name="Reasons" EntityType="Self.Reason" />
+    <EntitySet Name="RedemptionRequests" EntityType="Self.RedemptionRequest" />
+    <EntitySet Name="RedemptionStatus" EntityType="Self.RedemptionStatu" />
+    <EntitySet Name="Regions" EntityType="Self.Region" />
+    <EntitySet Name="Reports" EntityType="Self.Report" />
+    <EntitySet Name="RequestItems" EntityType="Self.RequestItem" />
+    <EntitySet Name="RequestOrders" EntityType="Self.RequestOrder" />
+    <EntitySet Name="RequestsLogs" EntityType="Self.RequestsLog" />
+    <EntitySet Name="RequestStatus" EntityType="Self.RequestStatu" />
+    <EntitySet Name="RequestTypes" EntityType="Self.RequestType" />
+    <EntitySet Name="ReturnInvoices" EntityType="Self.ReturnInvoice" />
+    <EntitySet Name="ReturnInvoiceItems" EntityType="Self.ReturnInvoiceItem" />
+    <EntitySet Name="RptGroups" EntityType="Self.RptGroup" />
+    <EntitySet Name="SafeLogs" EntityType="Self.SafeLog" />
+    <EntitySet Name="SalesItems" EntityType="Self.SalesItem" />
+    <EntitySet Name="SalesItemCategories" EntityType="Self.SalesItemCategory" />
+    <EntitySet Name="ServiceCenterInventories" EntityType="Self.ServiceCenterInventory" />
+    <EntitySet Name="ServiceCenterSalesItems" EntityType="Self.ServiceCenterSalesItem" />
+    <EntitySet Name="SubMenuItems" EntityType="Self.SubMenuItem" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="Suppliments" EntityType="Self.Suppliment" />
+    <EntitySet Name="SupplimentItems" EntityType="Self.SupplimentItem" />
+    <EntitySet Name="SupplimentStatus" EntityType="Self.SupplimentStatu" />
+    <EntitySet Name="SupplyNotifications" EntityType="Self.SupplyNotification" />
+    <EntitySet Name="SupplyNotificationActions" EntityType="Self.SupplyNotificationAction" />
+    <EntitySet Name="SupplyOrders" EntityType="Self.SupplyOrder" />
+    <EntitySet Name="SupplyOrderItems" EntityType="Self.SupplyOrderItem" />
+    <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
+    <EntitySet Name="TempCustomers" EntityType="Self.TempCustomer" />
+    <EntitySet Name="TimeSlots" EntityType="Self.TimeSlot" />
+    <EntitySet Name="TransferItems" EntityType="Self.TransferItem" />
+    <EntitySet Name="Transfers" EntityType="Self.Transfer" />
+    <EntitySet Name="TransferStatus" EntityType="Self.TransferStatu" />
+    <EntitySet Name="TransferTypes" EntityType="Self.TransferType" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserGroupsPages" EntityType="Self.UserGroupsPage" />
+    <EntitySet Name="UserServiceCenters" EntityType="Self.UserServiceCenter" />
+    <EntitySet Name="UsersGroups" EntityType="Self.UsersGroup" />
+    <EntitySet Name="UsersLogs" EntityType="Self.UsersLog" />
+    <AssociationSet Name="FK_RedemptionRequests_Awards" Association="Self.FK_RedemptionRequests_Awards">
+      <End Role="Awards" EntitySet="Awards" />
+      <End Role="RedemptionRequests" EntitySet="RedemptionRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BundleItems_Bundle" Association="Self.FK_BundleItems_Bundle">
+      <End Role="Bundle" EntitySet="Bundles" />
+      <End Role="BundleItems" EntitySet="BundleItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSInvoiceItem_Bundle" Association="Self.FK_POSInvoiceItem_Bundle">
+      <End Role="Bundle" EntitySet="Bundles" />
+      <End Role="POSInvoiceItem" EntitySet="POSInvoiceItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BundleItems_SalesItem" Association="Self.FK_BundleItems_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="BundleItems" EntitySet="BundleItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_Region" Association="Self.FK_City_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_City" Association="Self.FK_Customer_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectionRequest_Collector" Association="Self.FK_CollectionRequest_Collector">
+      <End Role="Collector" EntitySet="Collectors" />
+      <End Role="CollectorsDailyCode" EntitySet="CollectorsDailyCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginLog_Customer" Association="Self.FK_LoginLog_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="LoginLog" EntitySet="LoginLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RedemptionRequests_Customer" Association="Self.FK_RedemptionRequests_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="RedemptionRequests" EntitySet="RedemptionRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesItem_ItemType" Association="Self.FK_SalesItem_ItemType">
+      <End Role="ItemType" EntitySet="ItemTypes" />
+      <End Role="SalesItem" EntitySet="SalesItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Language" Association="Self.FK_User_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_NotificationMessages" Association="Self.FK_Notifications_NotificationMessages">
+      <End Role="NotificationMessages" EntitySet="NotificationMessages" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_NotificationsStatus" Association="Self.FK_Notifications_NotificationsStatus">
+      <End Role="NotificationsStatus" EntitySet="NotificationsStatus" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_User" Association="Self.FK_Notifications_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsReason_Reason" Association="Self.FK_PointsReason_Reason">
+      <End Role="Reason" EntitySet="Reasons" />
+      <End Role="PointsReason" EntitySet="PointsReasons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsReasonsProducts_PointsReason" Association="Self.FK_PointsReasonsProducts_PointsReason">
+      <End Role="PointsReason" EntitySet="PointsReasons" />
+      <End Role="PointsReasonsProducts" EntitySet="PointsReasonsProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsReasonsSCenters_PointsReason" Association="Self.FK_PointsReasonsSCenters_PointsReason">
+      <End Role="PointsReason" EntitySet="PointsReasons" />
+      <End Role="PointsReasonsSCenters" EntitySet="PointsReasonsSCenters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsReasonsProducts_SalesItem" Association="Self.FK_PointsReasonsProducts_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="PointsReasonsProducts" EntitySet="PointsReasonsProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSConnectionLog_User" Association="Self.FK_POSConnectionLog_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="POSConnectionLog" EntitySet="POSConnectionLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSInvoice_User" Association="Self.FK_POSInvoice_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="POSInvoice" EntitySet="POSInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSInvoiceItem_POSInvoice" Association="Self.FK_POSInvoiceItem_POSInvoice">
+      <End Role="POSInvoice" EntitySet="POSInvoices" />
+      <End Role="POSInvoiceItem" EntitySet="POSInvoiceItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSInvoiceItem_POSInvoiceItem" Association="Self.FK_POSInvoiceItem_POSInvoiceItem">
+      <End Role="POSInvoiceItem" EntitySet="POSInvoiceItems" />
+      <End Role="POSInvoiceItem1" EntitySet="POSInvoiceItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSInvoiceItem_SalesItem" Association="Self.FK_POSInvoiceItem_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="POSInvoiceItem" EntitySet="POSInvoiceItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RedemptionRequests_RedemptionStatus" Association="Self.FK_RedemptionRequests_RedemptionStatus">
+      <End Role="RedemptionStatus" EntitySet="RedemptionStatus" />
+      <End Role="RedemptionRequests" EntitySet="RedemptionRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestItem_SalesItem" Association="Self.FK_RequestItem_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="RequestItem" EntitySet="RequestItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesItem_SalesItemCategory" Association="Self.FK_SalesItem_SalesItemCategory">
+      <End Role="SalesItemCategory" EntitySet="SalesItemCategories" />
+      <End Role="SalesItem" EntitySet="SalesItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceCenterInventory_SalesItem" Association="Self.FK_ServiceCenterInventory_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="ServiceCenterInventory" EntitySet="ServiceCenterInventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceCenterSalesItem_SalesItem" Association="Self.FK_ServiceCenterSalesItem_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="ServiceCenterSalesItem" EntitySet="ServiceCenterSalesItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyOrderItem_SalesItem" Association="Self.FK_SupplyOrderItem_SalesItem">
+      <End Role="SalesItem" EntitySet="SalesItems" />
+      <End Role="SupplyOrderItem" EntitySet="SupplyOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyNotification_User" Association="Self.FK_SupplyNotification_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SupplyNotification" EntitySet="SupplyNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyNotificationAction_SupplyNotification" Association="Self.FK_SupplyNotificationAction_SupplyNotification">
+      <End Role="SupplyNotification" EntitySet="SupplyNotifications" />
+      <End Role="SupplyNotificationAction" EntitySet="SupplyNotificationActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyNotificationAction_User" Association="Self.FK_SupplyNotificationAction_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SupplyNotificationAction" EntitySet="SupplyNotificationActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyOrderItem_SupplyOrder" Association="Self.FK_SupplyOrderItem_SupplyOrder">
+      <End Role="SupplyOrder" EntitySet="SupplyOrders" />
+      <End Role="SupplyOrderItem" EntitySet="SupplyOrderItems" />
+    </AssociationSet>
+    <EntitySet Name="BookingCancelReasons" EntityType="MLPDB01Model.BookingCancelReason" />
+    <EntitySet Name="Packages" EntityType="MLPDB01Model.Package" />
+    <EntitySet Name="CustomerNotifications" EntityType="MLPDB01Model.CustomerNotification" />
+    <EntitySet Name="MLPNotifications" EntityType="MLPDB01Model.MLPNotification" />
+    <EntitySet Name="MLPNotificationTypes" EntityType="MLPDB01Model.MLPNotificationType" />
+    <AssociationSet Name="FK_CustomerNotification_Customer" Association="MLPDB01Model.FK_CustomerNotification_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerNotification" EntitySet="CustomerNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerNotification_MLPNotification" Association="MLPDB01Model.FK_CustomerNotification_MLPNotification">
+      <End Role="MLPNotification" EntitySet="MLPNotifications" />
+      <End Role="CustomerNotification" EntitySet="CustomerNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MLPNotification_MLPNotificationType" Association="MLPDB01Model.FK_MLPNotification_MLPNotificationType">
+      <End Role="MLPNotificationType" EntitySet="MLPNotificationTypes" />
+      <End Role="MLPNotification" EntitySet="MLPNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesItem_MobileCategory" Association="MLPDB01Model.FK_SalesItem_MobileCategory">
+      <End Role="MobileCategory" EntitySet="MobileCategories" />
+      <End Role="SalesItem" EntitySet="SalesItems" />
+    </AssociationSet>
+    <EntitySet Name="BookingStatus" EntityType="MLPDB01Model.BookingStatu" />
+    <EntitySet Name="Bookings" EntityType="MLPDB01Model.Booking" />
+    <EntitySet Name="ServiceCenters" EntityType="MLPDB01Model.ServiceCenter" />
+    <AssociationSet Name="FK_ServiceCenter_City" Association="MLPDB01Model.FK_ServiceCenter_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="ServiceCenter" EntitySet="ServiceCenters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_ServiceCenter" Association="MLPDB01Model.FK_Notifications_ServiceCenter">
+      <End Role="ServiceCenter" EntitySet="ServiceCenters" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsReasonsSCenters_PointsReasonsSCenters" Association="MLPDB01Model.FK_PointsReasonsSCenters_PointsReasonsSCenters">
+      <End Role="ServiceCenter" EntitySet="ServiceCenters" />
+      <End Role="PointsReasonsSCenter" EntitySet="PointsReasonsSCenters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RedemptionRequests_ServiceCenter" Association="MLPDB01Model.FK_RedemptionRequests_ServiceCenter">
+      <End Role="ServiceCenter" EntitySet="ServiceCenters" />
+      <End Role="RedemptionRequest" EntitySet="RedemptionRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyNotification_ServiceCenter" Association="MLPDB01Model.FK_SupplyNotification_ServiceCenter">
+      <End Role="ServiceCenter" EntitySet="ServiceCenters" />
+      <End Role="SupplyNotification" EntitySet="SupplyNotifications" />
+    </AssociationSet>
+    <EntitySet Name="MLPCustomerTokens" EntityType="MLPDB01Model.MLPCustomerToken" />
+    <EntitySet Name="Areas" EntityType="MLPDB01Model.Area" />
+    <EntitySet Name="CarBrands" EntityType="MLPDB01Model.CarBrand" />
+    <EntitySet Name="CarModels" EntityType="MLPDB01Model.CarModel" />
+    <EntitySet Name="Contracts" EntityType="MLPDB01Model.Contract" />
+    <EntitySet Name="ContractCars" EntityType="MLPDB01Model.ContractCar" />
+    <EntitySet Name="ContractPriceLists" EntityType="MLPDB01Model.ContractPriceList" />
+    <EntitySet Name="ContractUsers" EntityType="MLPDB01Model.ContractUser" />
+    <EntitySet Name="EngineTypes" EntityType="MLPDB01Model.EngineType" />
+    <AssociationSet Name="FK_Area_City" Association="MLPDB01Model.FK_Area_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Area" EntitySet="Areas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Area" Association="MLPDB01Model.FK_Customer_Area">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarModel_CarBrand" Association="MLPDB01Model.FK_CarModel_CarBrand">
+      <End Role="CarBrand" EntitySet="CarBrands" />
+      <End Role="CarModel" EntitySet="CarModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContractUsers_Contract" Association="MLPDB01Model.FK_ContractUsers_Contract">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="ContractUser" EntitySet="ContractUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContractUsers_User" Association="MLPDB01Model.FK_ContractUsers_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ContractUser" EntitySet="ContractUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomersCarNumbers_EngineType" Association="MLPDB01Model.FK_CustomersCarNumbers_EngineType">
+      <End Role="EngineType" EntitySet="EngineTypes" />
+      <End Role="CustomersCarNumber" EntitySet="CustomersCarNumbers" />
+    </AssociationSet>
+    <EntitySet Name="MLPSMSConfirmations" EntityType="MLPDB01Model.MLPSMSConfirmation" />
+    <EntitySet Name="CustomersClearNotifications" EntityType="MLPDB01Model.CustomersClearNotification" />
+    <AssociationSet Name="FK_CustomersClearNotifications_Customer" Association="MLPDB01Model.FK_CustomersClearNotifications_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomersClearNotification" EntitySet="CustomersClearNotifications" />
+    </AssociationSet>
+    <EntitySet Name="SurvayAnswers" EntityType="MLPDB01Model.SurvayAnswer" />
+    <EntitySet Name="SurvayEvaluations" EntityType="MLPDB01Model.SurvayEvaluation" />
+    <EntitySet Name="SurvayQuestions" EntityType="MLPDB01Model.SurvayQuestion" />
+    <EntitySet Name="SurvayMultiChooses" EntityType="MLPDB01Model.SurvayMultiChoose" />
+    <AssociationSet Name="FK_SurvayAnswers_SurvayQuestions" Association="MLPDB01Model.FK_SurvayAnswers_SurvayQuestions">
+      <End Role="SurvayQuestion" EntitySet="SurvayQuestions" />
+      <End Role="SurvayAnswer" EntitySet="SurvayAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurvayMultiChoose_SurvayQuestions" Association="MLPDB01Model.FK_SurvayMultiChoose_SurvayQuestions">
+      <End Role="SurvayQuestion" EntitySet="SurvayQuestions" />
+      <End Role="SurvayMultiChoose" EntitySet="SurvayMultiChooses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurvayAnswers_SurvayEvaluation" Association="MLPDB01Model.FK_SurvayAnswers_SurvayEvaluation">
+      <End Role="SurvayEvaluation" EntitySet="SurvayEvaluations" />
+      <End Role="SurvayAnswer" EntitySet="SurvayAnswers" />
+    </AssociationSet>
+    <EntitySet Name="Advertisements" EntityType="MLPDB01Model.Advertisement" />
+    <AssociationSet Name="FK_Advertisements_SystemUsers" Association="MLPDB01Model.FK_Advertisements_SystemUsers">
+      <End Role="SystemUser" EntitySet="SystemUsers" />
+      <End Role="Advertisement" EntitySet="Advertisements" />
+    </AssociationSet>
+    <EntitySet Name="AlForsanRedemptions" EntityType="MLPDB01Model.AlForsanRedemption" />
+    <EntitySet Name="AwardsTypes" EntityType="MLPDB01Model.AwardsType" />
+    <AssociationSet Name="FK_AlForsanRedemption_RedemptionRequests" Association="MLPDB01Model.FK_AlForsanRedemption_RedemptionRequests">
+      <End Role="RedemptionRequest" EntitySet="RedemptionRequests" />
+      <End Role="AlForsanRedemption" EntitySet="AlForsanRedemptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Awards_AwardsTypes" Association="MLPDB01Model.FK_Awards_AwardsTypes">
+      <End Role="AwardsType" EntitySet="AwardsTypes" />
+      <End Role="Award" EntitySet="Awards" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BookingCancelReason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsMobile" Type="Boolean" />
+    <Property Name="IsMobilePortal" Type="Boolean" />
+    <Property Name="NameAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageAbtract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageAbtractAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageHTMLAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PackageDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="CustomerNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_NotificationID" Type="Int32" Nullable="false" />
+    <Property Name="FK_CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="IsSeen" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="MLPDB01Model.FK_CustomerNotification_Customer" FromRole="CustomerNotification" ToRole="Customer" />
+    <NavigationProperty Name="MLPNotification" Relationship="MLPDB01Model.FK_CustomerNotification_MLPNotification" FromRole="CustomerNotification" ToRole="MLPNotification" />
+  </EntityType>
+  <EntityType Name="MLPNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotificationMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationDate" Type="DateTime" Precision="3" />
+    <Property Name="NotificationView" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_NotificationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CustomerNotifications" Relationship="MLPDB01Model.FK_CustomerNotification_MLPNotification" FromRole="MLPNotification" ToRole="CustomerNotification" />
+    <NavigationProperty Name="MLPNotificationType" Relationship="MLPDB01Model.FK_MLPNotification_MLPNotificationType" FromRole="MLPNotification" ToRole="MLPNotificationType" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MLPNotificationType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MLPNotifications" Relationship="MLPDB01Model.FK_MLPNotification_MLPNotificationType" FromRole="MLPNotificationType" ToRole="MLPNotification" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_CustomerNotification_Customer">
+    <End Type="MLPDB01Model.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="MLPDB01Model.CustomerNotification" Role="CustomerNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustomerNotification">
+        <PropertyRef Name="FK_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerNotification_MLPNotification">
+    <End Type="MLPDB01Model.MLPNotification" Role="MLPNotification" Multiplicity="1" />
+    <End Type="MLPDB01Model.CustomerNotification" Role="CustomerNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MLPNotification">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustomerNotification">
+        <PropertyRef Name="FK_NotificationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MLPNotification_MLPNotificationType">
+    <End Type="MLPDB01Model.MLPNotificationType" Role="MLPNotificationType" Multiplicity="1" />
+    <End Type="MLPDB01Model.MLPNotification" Role="MLPNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MLPNotificationType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MLPNotification">
+        <PropertyRef Name="FK_NotificationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesItem_MobileCategory">
+    <End Type="MLPDB01Model.MobileCategory" Role="MobileCategory" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.SalesItem" Role="SalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MobileCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesItem">
+        <PropertyRef Name="FK_MobileCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BookingStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NameAR" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CustomerID" Type="Int32" />
+    <Property Name="Car_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_ServiceCenterID" Type="Int32" />
+    <Property Name="BookingDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="FK_CancelReasonID" Type="Int32" />
+    <Property Name="IsUserCancel" Type="Boolean" />
+    <Property Name="FK_BookingStatusID" Type="Int32" />
+    <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ServiceCenter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CenterName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CenterNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AddressAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CityID" Type="Int32" />
+    <Property Name="AreaAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="px" Type="Decimal" Precision="18" Scale="7" />
+    <Property Name="py" Type="Decimal" Precision="18" Scale="7" />
+    <Property Name="POSImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CenterGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="RemainingValue" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="IsCost" Type="Boolean" />
+    <Property Name="LicenseExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="SCExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="MapLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OpeningTime" Type="Time" Precision="7" />
+    <Property Name="ClosingTime" Type="Time" Precision="7" />
+    <Property Name="NoOfServicesPerTimeSlot" Type="Int32" />
+    <Property Name="NoOfShifts" Type="Int32" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsInLoyaltyProgram" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="MLPDB01Model.FK_ServiceCenter_City" FromRole="ServiceCenter" ToRole="City" />
+    <NavigationProperty Name="Notifications" Relationship="MLPDB01Model.FK_Notifications_ServiceCenter" FromRole="ServiceCenter" ToRole="Notification" />
+    <NavigationProperty Name="PointsReasonsSCenters" Relationship="MLPDB01Model.FK_PointsReasonsSCenters_PointsReasonsSCenters" FromRole="ServiceCenter" ToRole="PointsReasonsSCenter" />
+    <NavigationProperty Name="RedemptionRequests" Relationship="MLPDB01Model.FK_RedemptionRequests_ServiceCenter" FromRole="ServiceCenter" ToRole="RedemptionRequest" />
+    <NavigationProperty Name="SupplyNotifications" Relationship="MLPDB01Model.FK_SupplyNotification_ServiceCenter" FromRole="ServiceCenter" ToRole="SupplyNotification" />
+    <Property Name="DescriptionHTMLAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsBooking" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OpenningDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TerritoryId" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_ServiceCenter_City">
+    <End Type="MLPDB01Model.City" Role="City" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.ServiceCenter" Role="ServiceCenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServiceCenter">
+        <PropertyRef Name="FK_CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_ServiceCenter">
+    <End Type="MLPDB01Model.ServiceCenter" Role="ServiceCenter" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCenter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="FK_CenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsReasonsSCenters_PointsReasonsSCenters">
+    <End Type="MLPDB01Model.ServiceCenter" Role="ServiceCenter" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.PointsReasonsSCenter" Role="PointsReasonsSCenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCenter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PointsReasonsSCenter">
+        <PropertyRef Name="FK_ServiceCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RedemptionRequests_ServiceCenter">
+    <End Type="MLPDB01Model.ServiceCenter" Role="ServiceCenter" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.RedemptionRequest" Role="RedemptionRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCenter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RedemptionRequest">
+        <PropertyRef Name="FK_ServiceCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyNotification_ServiceCenter">
+    <End Type="MLPDB01Model.ServiceCenter" Role="ServiceCenter" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.SupplyNotification" Role="SupplyNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCenter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SupplyNotification">
+        <PropertyRef Name="FK_ServiceCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MLPCustomerToken">
+    <Key>
+      <PropertyRef Name="TokenID" />
+    </Key>
+    <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FireBaseToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AreaNameEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AreaNameAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FK_CityID" Type="Int32" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="City" Relationship="MLPDB01Model.FK_Area_City" FromRole="Area" ToRole="City" />
+    <NavigationProperty Name="Customers" Relationship="MLPDB01Model.FK_Customer_Area" FromRole="Area" ToRole="Customer" />
+    <Property Name="FK_MangerID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CarBrand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BrandNameAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CarModels" Relationship="MLPDB01Model.FK_CarModel_CarBrand" FromRole="CarBrand" ToRole="CarModel" />
+  </EntityType>
+  <EntityType Name="CarModel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModelNameAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FK_BrandID" Type="Int32" />
+    <NavigationProperty Name="CarBrand" Relationship="MLPDB01Model.FK_CarModel_CarBrand" FromRole="CarModel" ToRole="CarBrand" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Corporate" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContractStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ContractEndDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatorID" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CorporateAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InLoyalty" Type="Boolean" />
+    <NavigationProperty Name="ContractUsers" Relationship="MLPDB01Model.FK_ContractUsers_Contract" FromRole="Contract" ToRole="ContractUser" />
+  </EntityType>
+  <EntityType Name="ContractCar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ContractID" Type="Int32" />
+    <Property Name="CarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" />
+    <Property Name="EmpNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ContractPriceList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ContractID" Type="Int32" />
+    <Property Name="FK_SalesItemID" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatorID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Vat" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ContractUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ContractID" Type="Int32" />
+    <Property Name="FK_UserID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Contract" Relationship="MLPDB01Model.FK_ContractUsers_Contract" FromRole="ContractUser" ToRole="Contract" />
+    <NavigationProperty Name="User" Relationship="MLPDB01Model.FK_ContractUsers_User" FromRole="ContractUser" ToRole="User" />
+  </EntityType>
+  <EntityType Name="EngineType">
+    <Key>
+      <PropertyRef Name="Engine_ID" />
+    </Key>
+    <Property Name="Engine_ID" Type="Int32" Nullable="false" />
+    <Property Name="Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type_NameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsMobile" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CustomersCarNumbers" Relationship="MLPDB01Model.FK_CustomersCarNumbers_EngineType" FromRole="EngineType" ToRole="CustomersCarNumber" />
+  </EntityType>
+  <Association Name="FK_Area_City">
+    <End Type="MLPDB01Model.City" Role="City" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.Area" Role="Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="FK_CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Area">
+    <End Type="MLPDB01Model.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="FK_AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarModel_CarBrand">
+    <End Type="MLPDB01Model.CarBrand" Role="CarBrand" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.CarModel" Role="CarModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarBrand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CarModel">
+        <PropertyRef Name="FK_BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContractUsers_Contract">
+    <End Type="MLPDB01Model.Contract" Role="Contract" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.ContractUser" Role="ContractUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContractUser">
+        <PropertyRef Name="FK_ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContractUsers_User">
+    <End Type="MLPDB01Model.User" Role="User" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.ContractUser" Role="ContractUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContractUser">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomersCarNumbers_EngineType">
+    <End Type="MLPDB01Model.EngineType" Role="EngineType" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.CustomersCarNumber" Role="CustomersCarNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngineType">
+        <PropertyRef Name="Engine_ID" />
+      </Principal>
+      <Dependent Role="CustomersCarNumber">
+        <PropertyRef Name="FK_Engine_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MLPSMSConfirmation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstLoginMS" Type="Boolean" />
+    <Property Name="MobilOilMS" Type="Boolean" />
+    <Property Name="UpLevelMS" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModificationDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CustomersClearNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CustomerID" Type="Int32" />
+    <Property Name="Cleardate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_CustomersClearNotifications_Customer">
+    <End Type="MLPDB01Model.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.CustomersClearNotification" Role="CustomersClearNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustomersClearNotification">
+        <PropertyRef Name="FK_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SurvayAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EvaluaionID" Type="Int32" />
+    <Property Name="FK_QuestionID" Type="Int32" />
+    <Property Name="AnswerValue" Type="Int32" />
+    <Property Name="AnswerTxtValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnswerDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SurvayQuestion" Relationship="MLPDB01Model.FK_SurvayAnswers_SurvayQuestions" FromRole="SurvayAnswer" ToRole="SurvayQuestion" />
+    <NavigationProperty Name="SurvayEvaluation" Relationship="MLPDB01Model.FK_SurvayAnswers_SurvayEvaluation" FromRole="SurvayAnswer" ToRole="SurvayEvaluation" />
+  </EntityType>
+  <EntityType Name="SurvayEvaluation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeOfCar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EvaluationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EvaluationTime" Type="Time" Precision="7" />
+    <Property Name="FK_CustomerID" Type="Int32" />
+    <Property Name="CustomerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SurvayAnswers" Relationship="MLPDB01Model.FK_SurvayAnswers_SurvayEvaluation" FromRole="SurvayEvaluation" ToRole="SurvayAnswer" />
+  </EntityType>
+  <EntityType Name="SurvayQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ValueType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SurvayAnswers" Relationship="MLPDB01Model.FK_SurvayAnswers_SurvayQuestions" FromRole="SurvayQuestion" ToRole="SurvayAnswer" />
+    <NavigationProperty Name="SurvayMultiChooses" Relationship="MLPDB01Model.FK_SurvayMultiChoose_SurvayQuestions" FromRole="SurvayQuestion" ToRole="SurvayMultiChoose" />
+  </EntityType>
+  <EntityType Name="SurvayMultiChoose">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ChooseTextField" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChooseGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FK_QusetionID" Type="Int32" />
+    <NavigationProperty Name="SurvayQuestion" Relationship="MLPDB01Model.FK_SurvayMultiChoose_SurvayQuestions" FromRole="SurvayMultiChoose" ToRole="SurvayQuestion" />
+  </EntityType>
+  <Association Name="FK_SurvayAnswers_SurvayQuestions">
+    <End Type="MLPDB01Model.SurvayQuestion" Role="SurvayQuestion" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.SurvayAnswer" Role="SurvayAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurvayQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SurvayAnswer">
+        <PropertyRef Name="FK_QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurvayMultiChoose_SurvayQuestions">
+    <End Type="MLPDB01Model.SurvayQuestion" Role="SurvayQuestion" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.SurvayMultiChoose" Role="SurvayMultiChoose" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurvayQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SurvayMultiChoose">
+        <PropertyRef Name="FK_QusetionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurvayAnswers_SurvayEvaluation">
+    <End Type="MLPDB01Model.SurvayEvaluation" Role="SurvayEvaluation" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.SurvayAnswer" Role="SurvayAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurvayEvaluation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SurvayAnswer">
+        <PropertyRef Name="FK_EvaluaionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Advertisement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imagename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AdsOrder" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="Lastmodifieddate" Type="DateTime" Precision="3" />
+    <Property Name="FK_CreatorID" Type="Int32" />
+    <NavigationProperty Name="SystemUser" Relationship="MLPDB01Model.FK_Advertisements_SystemUsers" FromRole="Advertisement" ToRole="SystemUser" />
+  </EntityType>
+  <Association Name="FK_Advertisements_SystemUsers">
+    <End Type="MLPDB01Model.SystemUser" Role="SystemUser" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.Advertisement" Role="Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="FK_CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AlForsanRedemption">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MembershipNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RedeemMiles" Type="Int32" />
+    <Property Name="FK_ReviwedBy" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_RedemptionRequest" Type="Int32" />
+    <NavigationProperty Name="RedemptionRequest" Relationship="MLPDB01Model.FK_AlForsanRedemption_RedemptionRequests" FromRole="AlForsanRedemption" ToRole="RedemptionRequest" />
+  </EntityType>
+  <EntityType Name="AwardsType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AwardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Awards" Relationship="MLPDB01Model.FK_Awards_AwardsTypes" FromRole="AwardsType" ToRole="Award" />
+  </EntityType>
+  <Association Name="FK_AlForsanRedemption_RedemptionRequests">
+    <End Type="MLPDB01Model.RedemptionRequest" Role="RedemptionRequest" Multiplicity="0..1" />
+    <End Type="MLPDB01Model.AlForsanRedemption" Role="AlForsanRedemption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RedemptionRequest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AlForsanRedemption">
+        <PropertyRef Name="FK_RedemptionRequest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Awards_AwardsTypes">
+    <End Type="MLPDB01Model.AwardsType" Role="AwardsType" Multiplicity="1" />
+    <End Type="MLPDB01Model.Award" Role="Award" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AwardsType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Award">
+        <PropertyRef Name="FK_AwardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

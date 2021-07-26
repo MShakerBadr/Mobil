@@ -1,0 +1,227 @@
+﻿@model  IEnumerable<MLP.BAL.ViewModels.RequestItemsViewModel>
+@using Newtonsoft.Json;
+@{ ViewBag.Title = "Create"; }
+
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+
+
+        <div class="form-group col-md-7 col-sm-7">
+            <label class="control-label col-md-1">Item</label>
+            <div class="col-md-11">
+                @Html.DropDownList("item", new SelectList(ViewBag.SalesItemList, "ID", "ItemName"), new { @id = "ItemId", @class = "form-control select2" })
+                
+            </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-3">
+            <label class="control-label col-md-4 col-sm-4">Quantity</label>
+            <div class="col-md-8 col-sm-8">
+                <input type="number" id="Quantity" min="1" required value="1" class="form-control" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <button id="SaveItembtn" class="btn-primary form-control" type="button">Add</button>
+        </div>
+       
+
+    </div>
+    
+</div>
+<div style="align-content:center">
+  
+    <table class="table table-bordered table-hover table-striped table-responsive" id="tableitems" style="width:100%;">
+        <tr>
+           
+            <th hidden="hidden">
+                <label class="control-label">ID</label>
+            </th>
+            <th hidden="hidden">
+                <label class="control-label">FK_RequestNo</label>
+            </th>
+
+            <th hidden="hidden">
+                <label class="control-label">Sales Item ID</label>
+            </th>
+            <th  style="text-align:center;width:500px">
+                <label class="control-label">Item Name</label>
+            </th>
+            <th  style="text-align:center;width:400px">
+                <label  class="control-label">Quantity</label>
+            </th>
+            <th style="text-align:center;width:300px">
+                <label>Remove</label>
+            </th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+              
+                <td style="text-align:center" class="ID" hidden="hidden">@Html.DisplayFor(modelItem => item.ID)</td>
+                <td style="text-align:center" class="FK_RequestNo" hidden="hidden">@Html.DisplayFor(modelItem => item.FK_RequestNo)</td>
+                <td style="text-align:center" class="SalesItemID" hidden="hidden">@Html.DisplayFor(modelItem => item.SalesItemID)</td>
+                <td class="ItemName"  style="text-align:center;">@Html.DisplayFor(modelItem => item.ItemName)</td>
+                <td class="Quantity"  style="text-align:center;">@Html.DisplayFor(modelItem => item.Quantity)</td>
+                <td style="text-align:center;"><span class="RemoveItembtn fa fa-trash fa-2x" style="color:red"></span></td>
+            </tr>
+        }
+
+    </table>
+    <div class="col-md-3">
+        <button id="Createbtn" class="form-control btn-primary" type="button">save</button>
+    </div>
+   <br />
+    <br />
+</div>
+@section scripts{
+<script>
+    $(document).ready(function () {
+       
+     
+
+        $('#Quantity').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+
+        $("#SaveItembtn").click(function () {
+      
+            var ItemId = $("#ItemId").val().trim();
+            var ItemName = $("#ItemId option:selected").text().trim();
+            var Quantity = $("#Quantity").val().trim();
+            var Alreadyexist = false;
+            $('table tr').each(function () {
+                var SalesItemID = $(this).find('.SalesItemID').text().trim();
+                if (SalesItemID == ItemId) {
+                    Alreadyexist = true;
+
+
+                }
+            });
+
+            if (Alreadyexist == true) {
+                swal({
+                    title: "Are you sure?",
+                    text: "This item added before , Do you need to update its quantity?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    showCancelButton: true,
+                    cancelButtonText: "Cancel",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },function (willDelete)  {
+                    if (willDelete) {
+                        $('table tr').each(function () {
+                            debugger;
+                            var SalesItemID = $(this).find('.SalesItemID').text().trim();
+                            if (SalesItemID == ItemId) {
+                                $(this).find('.Quantity').text(Quantity);
+                                //swal("Well done!");
+
+                            }
+                        });
+                    }
+                    //} else {
+                    //    swal("Nothing Changed!");
+                    //}
+                    });
+              
+            } else
+                if (Quantity == "" || Quantity == "0") {
+
+                    swal({
+                        title: '<h3>Please Insert the Quantity!</h3>',
+                        confirmButtonText: 'ok',
+                        type: "error",
+                        html: true
+
+                    });
+                } else {
+
+                    var markup = '<tr>'+
+                        '<td   style ="text-align:center;" class="ID" hidden="hidden" ></td>'
+                        +'<td class="FK_RequestNo"  style="text-align:center;" hidden="hidden" ></td>'
+                        +'<td class="SalesItemID" style="text-align:center;" hidden="hidden">' + ItemId + '</td>'
+                        +'<td class="ItemName" style="text-align:center;">' + ItemName + '</td>'
+                        +'<td class="Quantity" style="text-align:center;">' + Quantity + '</td>'
+                        +'<td style="text-align:center;"><span class="RemoveItembtn fa fa-trash fa-2x" style="color:red"></span></td>'
+                        +' </tr> ';
+                    $("#tableitems tbody").append(markup);
+                }
+
+
+
+
+
+        });
+
+        $("#Createbtn").click(function () {
+
+            var ID = 0;
+            if (window.location.href.indexOf("Create?ID") > -1) {
+                const urlParams = new URLSearchParams(window.location.search);
+                var ID = urlParams.get('ID');
+                //ID = getQueryStringValue('');
+            }
+            var list = [];
+            $('table tr').each(function () {
+                var ID = $(this).find('.ID').text().trim();
+                var FK_RequestNo = $(this).find('.FK_RequestNo').text().trim();
+                var SalesItemID = $(this).find('.SalesItemID').text().trim();
+                var name = $(this).find('.ItemName').text().trim();
+                var qnt = $(this).find('.Quantity').text().trim();
+                if (name != "") {
+                    list.push({ "ID": ID, "FK_RequestNo": FK_RequestNo , "SalesItemID": SalesItemID, "ItemName": name, "Quantity": qnt });
+
+                }
+            });
+            console.log("list", list);
+            if (list.length != 0) {
+                var data = { List: list, ID: ID };
+                // debugger;
+                $.ajax({
+                    url: "/RequestOrder/Create",
+                    data: JSON.stringify(data),
+                    type: "POST",
+                    contentType: "application/json",
+                    success: function (data) {
+                        //swal({
+                        //    title: '<h3>Saved Successfully</h3>',
+                        //    confirmButtonText: 'ok',
+                        //    type: "success",
+                        //    html: true
+
+                        //});
+                        window.location.href = '/RequestOrder/Index/'
+                    }
+                });
+            } else {
+                swal({
+                    title: '<h3>You should select items!</h3>',
+                    confirmButtonText: 'ok',
+                    type: "error",
+                    html: true
+
+                });
+            }
+
+
+        });
+
+        $("#tableitems").on('click',".RemoveItembtn",function () {
+           debugger;
+           $(this).closest('tr').remove();
+
+        });
+
+
+    });
+</script>
+    }
+
+

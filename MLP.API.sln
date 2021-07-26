@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.API", "MLP.API\MLP.API.csproj", "{0C8BC423-CDCB-47A7-8D96-0798CB02E3F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.Tests", "MLP.Tests\MLP.Tests.csproj", "{433F06BF-6FB2-46F4-9ACE-C2D3B3AF41CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.Web.UI", "MLP.Web.UI\MLP.Web.UI.csproj", "{84CEEDB2-758A-4A3F-B68B-BC4ED25CCBB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.BAL", "MLP.BAL\MLP.BAL.csproj", "{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.DAL", "MLP.DAL\MLP.DAL.csproj", "{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLPPages", "MLPPages\MLPPages.csproj", "{4D2467FE-9EA6-4D27-B3B9-C4912440EFB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLP.Web.Evaluation", "MLP.Web.Evaluation\MLP.Web.Evaluation.csproj", "{E0D78D70-C334-4FE2-9D14-6ACA3F276C6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C8BC423-CDCB-47A7-8D96-0798CB02E3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8BC423-CDCB-47A7-8D96-0798CB02E3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8BC423-CDCB-47A7-8D96-0798CB02E3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8BC423-CDCB-47A7-8D96-0798CB02E3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{433F06BF-6FB2-46F4-9ACE-C2D3B3AF41CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433F06BF-6FB2-46F4-9ACE-C2D3B3AF41CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433F06BF-6FB2-46F4-9ACE-C2D3B3AF41CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433F06BF-6FB2-46F4-9ACE-C2D3B3AF41CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CEEDB2-758A-4A3F-B68B-BC4ED25CCBB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CEEDB2-758A-4A3F-B68B-BC4ED25CCBB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CEEDB2-758A-4A3F-B68B-BC4ED25CCBB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CEEDB2-758A-4A3F-B68B-BC4ED25CCBB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2467FE-9EA6-4D27-B3B9-C4912440EFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2467FE-9EA6-4D27-B3B9-C4912440EFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2467FE-9EA6-4D27-B3B9-C4912440EFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2467FE-9EA6-4D27-B3B9-C4912440EFB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0D78D70-C334-4FE2-9D14-6ACA3F276C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D78D70-C334-4FE2-9D14-6ACA3F276C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D78D70-C334-4FE2-9D14-6ACA3F276C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D78D70-C334-4FE2-9D14-6ACA3F276C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0844FDC3-D131-4D58-9180-D8A1D16E2B6F}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://win-fi0klkn8j7c:8080/tfs/defaultcollection
+		SccProjectUniqueName0 = MLP.DAL\\MLP.DAL.csproj
+		SccProjectName0 = MLP.DAL
+		SccLocalPath0 = MLP.DAL
+		SccProjectUniqueName1 = MLP.BAL\\MLP.BAL.csproj
+		SccProjectName1 = MLP.BAL
+		SccLocalPath1 = MLP.BAL
+		SccProjectUniqueName2 = MLP.Web.UI\\MLP.Web.UI.csproj
+		SccProjectName2 = MLP.Web.UI
+		SccLocalPath2 = MLP.Web.UI
+		SccProjectUniqueName3 = MLP.API\\MLP.API.csproj
+		SccProjectName3 = MLP.API
+		SccLocalPath3 = MLP.API
+		SccProjectUniqueName4 = MLP.Tests\\MLP.Tests.csproj
+		SccProjectName4 = MLP.Tests
+		SccLocalPath4 = MLP.Tests
+		SccProjectUniqueName5 = MLPPages\\MLPPages.csproj
+		SccProjectName5 = MLPPages
+		SccLocalPath5 = MLPPages
+		SccProjectUniqueName6 = MLP.Web.Evaluation\\MLP.Web.Evaluation.csproj
+		SccProjectName6 = MLP.Web.Evaluation
+		SccLocalPath6 = MLP.Web.Evaluation
+		SccLocalPath7 = .
+	EndGlobalSection
+EndGlobal

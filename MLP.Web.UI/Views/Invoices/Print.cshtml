@@ -1,0 +1,229 @@
+﻿@model MLP.Web.UI.Controllers.InvoicesController.dataitems
+@{
+    ViewBag.Title = "Print";
+    Layout = "~/Views/Shared/_PrintLayout.cshtml";
+}
+
+
+<table style="width:100%">
+    <tr style="font-weight:bold;width:100%">
+        <td style="width:33%;text-align:center">الرقم الضريبي :300189061500003</td>
+        <td style="width:33%;text-align:center">Vat Invoice</td>
+        <td style="width:33%;text-align:center">@Model._data.CenterNameEn</td>
+    </tr>
+    <tr style="font-weight:bold;width:100%">
+        <td style="width:33%;text-align:center">نوع العملة / الريال السعودي</td>
+        <td style="width:33%;text-align:center">ضريبة القيمه المضافة</td>
+        <td style="width:33%;text-align:center">@Model._data.CenterNameAr</td>
+    </tr>
+</table>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+
+<table style="width:100%;font-size:small">
+    <tr style="width:25%">
+        <td style="width: 25%">
+            <label id="LblInvNo">Invoice/الفاتورة</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="TxtInvNo">@Model._data.InvoiceNo</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="LblCarBrand">Car Brand/ ماركة السيارة</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="TxtCarBrand">@Model._data.vendor</label>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 25%">
+            <label>Date/التاريخ</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtDate">@Model._data.invdate</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="LblModel">Model/الموديل</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="Label3">@Model._data.model</label>
+        </td>
+    </tr>
+    <tr style="width: 25%">
+        <td style="width: 25%">
+            <label id="LblTime">Time/الوقت</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtTime1">@Model._data.invtime</label>
+        </td>
+        <td style="width: 25%">
+            <label>Manufacturing Year/سنة التصنيع</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtYear">@Model._data.year</label>
+        </td>
+    </tr>
+    <tr style="width: 25%">
+        <td style="width: 25%">
+            <label id="LblCustomer">Customer Name/اسم العميل</label>
+        </td>
+
+        <td style="width: 25%">
+            <label id="TxtCustomer">@Model._data.CustName</label>
+        </td>
+        <td style="width: 25%">
+            <label id="LblEngineType">EngineType/نوع المحرك</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtEngineType">@Model._data.model</label>
+        </td>
+    </tr>
+    <tr style="width: 25%">
+        <td style="width: 25%">
+            <label id="LblPhone">Customer Phone/هاتف العميل</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtPhone">@Model._data.Mobile</label>
+        </td>
+        <td style="width: 25%">
+            <label id="LblPlatNo" Text="">Plat No/رقم اللوحة</label>
+        </td>
+        <td style="width: 25%">
+            <label id="TxtPlatNo">@Model._data.CarNumber</label>
+        </td>
+    </tr>
+</table>
+<div>&nbsp;</div>
+
+
+<table border="1" style="width:100%;border-style:inherit;font-size:10px;">
+    <thead>
+    <thead>
+        <tr style="font-weight:bold">
+            <th>Item Code/ كود الصنف</th>
+            <th>Item Name/ اسم الصنف</th>
+            <th>Quantity/الكمية</th>
+            <th>Price/السعر</th>
+            <th>Total/المجموع</th>
+            <th>Vat %</th>
+            <th>ItemVat/الضريبة</th>
+            <th>GrandTotal/الاجمالي</th>
+            <th>Return/المرتجع</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model._items)
+        {
+            <tr style="font-size:x-small">
+                <td style="text-align:center">@item.ItemCode</td>
+                <td style="text-align:center">@item.ItemName</td>
+                <td style="text-align:center">@item.Qty</td>
+                <td style="text-align:center">@item.Price SAR</td>
+                <td style="text-align:center">@(item.Price * item.Qty) SAR</td>
+                <td style="text-align:center">@item.ItmReturn</td>
+                <td style="text-align:center">@item.ItmReturn SAR</td>
+                <td style="text-align:center">@item.ItmReturn SAR</td>
+                <td style="text-align:center">@item.ItmReturn</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<div>&nbsp;</div>
+
+<table style="font-size:small;width:100%">
+
+    <tr>
+        <td style="width: 25%">
+            <lable ID="LblTotal"> Total/الاجمالي </lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtTotal1">@Model._data.GrandTotal SAR</Label>
+        </td>
+        <td style="width: 25%">
+            <lable ID="LblPaid">Site Manager</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtPaid1">@Model._data.UserName</Label>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="width: 25%">
+            <lable ID="LblCash"> Vat/الضريبة</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtCash1">@Model._data.Vat SAR</Label>
+        </td>
+        <td style="width: 25%">
+            <lable ID="LblVisa">Discount/الخصم</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtVisa1">@Model._data.Discount SAR</Label>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="width: 25%">
+            <lable ID="LblVisa">Amount Paid/ المبلغ المدفوع</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtVisa1">@Model._data.GrandTotal SAR</Label>
+        </td>
+        <td style="width: 25%">
+            <lable ID="LblVisa">Current KM / كم الحالى</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtVisa1">@Model._data.CurrentMileage KM</Label>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="width: 25%">
+            <lable id="LblManager">Change</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtManager1">0</Label>
+        </td>
+        <td style="width: 25%">
+            <lable ID="LblCurrent">Next oil/الزياره القادمة</lable>
+        </td>
+        <td style="width: 25%">
+            <Label id="TxtCurrent1">@Model._data.NextVisit KM</Label>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr style="font-size:small">
+        <td style="width: 15%">
+            Cash/نقدى
+        </td>
+        <td style="width: 15%">
+            @Model._data.cash SAR
+        </td>
+        <td style="width: 10%">
+        <td style="width: 15%">
+            Visa/بطاقة ائتمانية
+        </td>
+        <td style="width: 15%">
+            @Model._data.visa SAR
+        </td>
+        <td style="width: 5%"></td>
+        <td style="width: 15%">
+            Credit/آجل
+        </td>
+        <td style="width: 15%">
+            @Model._data.Credit SAR
+        </td>
+    </tr>
+</table>
+
+<div class="watermark" style="font-size: 100pt;">
+    <p>Drafted</p>
+</div>

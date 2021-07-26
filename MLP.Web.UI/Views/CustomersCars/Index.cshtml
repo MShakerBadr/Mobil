@@ -1,0 +1,124 @@
+﻿@*@model MLP.DAL.CustomersCarNumber*@
+
+@{
+    ViewBag.Title = "Vehicles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>@ViewBag.Title</h3>
+<br />
+
+<div class="form-horizontal">
+
+
+
+    <div class="form-group">
+        @Html.Label("CarNumber", "Vehicle Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            <div class="col-md-7">
+                <input type="text" id="carno" name="carno" maxlength="4" placeholder="Numbers" class="form-control" style="margin-left:-15px;" />
+            </div>
+            <div class="col-md-5">
+                <input type="text" id="carchar" name="carchar" maxlength="3" placeholder="Symbols" class="form-control" style="margin-left:-40px;" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <input type="button" value="Search" id="save" class="btn btn-primary" />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+    </div>
+</div>
+@section scripts{
+
+    <script>
+
+    function isNumeric(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    $(document).ready(function () {
+        $('#carno').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+        $('#carchar').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+
+        $('#carno').on('keypress', function (e) {
+            if (!isNumeric(e)) {
+                e.preventDefault();
+            }
+        });
+        $('#save').on("click", function (e) {
+            if ($('#carno').val().trim() == "" || $('#carchar').val().trim() == "") {
+                swal({
+                    title: '<h3>Please insert Vehicle number!</h3>',
+                    confirmButtonText: 'ok',
+                    type: "error",
+                    html: true
+
+                });
+                e.preventDefault();
+            } else {
+
+                $.ajax({
+                    url: "/CustomersCars/Checkcar?Carno=" + $('#carno').val() + "&Carchar=" + $('#carchar').val(),
+                    type: "Get",
+                    contentType: false,
+                    success: function (data) {
+                        if (data) {
+                            var Table = "";
+                            var re = /-?\d+/;
+                            var D = new Date(parseInt(re.exec(data.CreationDate)[0]));
+                            //var D = new Date(data.CreationDate);
+                            if (data.MobileUser == true) {
+                                Table = "<table class='table table-hover table-bordered' style='overflow-y: hidden;height:289px;'>" +
+                                    "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Car owner : </h3></td><td  style='width: 250px;'><h3>" + data.Name + "</h3></td></tr>" +
+                                    "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Mobile : </h3></td><td  style='width: 250px;'><h3>" + data.Mobile + "</h3></td></tr>" +
+                                    "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Mobile app : </h3></td><td  style='width: 250px;'><i class='fa fa-check-circle fa-2x'></i></td></tr>" +
+                                    "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Creation Date : </h3></td><td  style='width: 250px;'> <h3>" + (parseInt(D.getMonth()) + 1) + "/" + D.getDate() + "/" + D.getFullYear() + "</h3></td></tr></table>";
+
+                            } else {
+                                Table = "<table class='table table-hover table-bordered' style='overflow-y: hidden;height:289px;'>" +
+                                 "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Car owner : </h3></td><td style='width: 250px;'><h3>" + data.Name + "</h3></td></tr>" +
+                                 "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Mobile : </h3></td><td  style='width: 250px;'><h3>" + data.Mobile + "</h3></td></tr>" +
+                                 "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Mobile app : </h3></td><td  style='width: 250px;'><i class='fa fa-times-circle fa-2x'></i></td></tr>" +
+                                 "<tr style='width:100%'><td style='text-align:left;width: 190px;'><h3 style='font-weight:700'>Creation Date : </h3></td><td  style='width: 250px;'> <h3>" + (parseInt(D.getMonth()) + 1) + "/" + D.getDate() + "/" + D.getFullYear() + "</h3></td></tr></table>";
+
+
+                            }
+
+                            swal({
+                                title: '',
+                                text: Table,
+                                confirmButtonText: 'Ok',
+                                type: "success",
+                                html: true
+                            });
+                        } else {
+                            swal({
+                                title: '<h3>This Car not assigned to any user yet</h3>',
+                                confirmButtonText: 'Ok',
+                                type: "error",
+                                html: true
+                            });
+
+
+                        }
+                    },
+                });
+
+            }
+        });
+    });
+</script>
+}

@@ -1,0 +1,275 @@
+﻿@model IEnumerable<MLP.Web.UI.Models.InvoiceViewModel>
+
+@{
+    ViewBag.Title = "Invoices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Invoices</h2>
+
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+
+        <div class="col-md-8">
+            <div class="col-md-4">
+                @Html.Label("CustomerCode", "Search:", htmlAttributes: new { @class = "control-label col-md-12", @id = "CustomerCode" })
+            </div>
+            <div class="col-md-5">
+                <input type="text" id="custCode" name="custCode" maxlength="12" placeholder="Customer mobile or Vehicle number" class="form-control" style="margin-left:-15px;" />
+            </div>
+            <div class="col-md-2">
+                <input type="button" value="Search" id="Search" class="btn btn-primary" />
+                @*<input type="button" value="Search" onclick="location.href='@Url.Action("Index", "Invoices")?id=' + document.getElementById('CustomerCode').value" />*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="Invoiceform">
+    <table class="table table-bordered table-responsive table-striped table-hover" style="display: block;overflow-x: auto;white-space: nowrap;" id="Invoicetable">
+        <thead>
+            <tr>
+                <th style="text-align:center;width:200px;display:none">
+                    <label for="ID" class="control-label">ID</label>
+                </th>
+                <th></th>
+                <th></th>
+                <th style="text-align:center;width:200px;">
+                    <label for="ServiceCenterName" class="control-label">Center Name</label>
+                </th>
+                <th style="text-align:center;width:350px;">
+                    <label for="CustomerName" class="control-label">Customer Name</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="CustomerName" class="control-label">Mobile Number</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="InvoiceNo" class="control-label">Invoice Number</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="InvoiceDate" class="control-label">Invoice Date</label>
+                </th>
+                <th style="text-align:center;width:120px;">
+                    <label for="CarNumber" class="control-label">Vehicle Number</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="TotalAmount" class="control-label">Total Amount</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="VatPercent" class="control-label">Vat %</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="Vat" class="control-label">Vat Amount</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="DiscountAmount" class="control-label">Discount Amount</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="TotalReturn" class="control-label">Total Return</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="TotalWithVat" class="control-label">Grand Total</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="Cash" class="control-label">Cash</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="Visa" class="control-label">Visa</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="Credit" class="control-label">Credit</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="CashReturn" class="control-label">Cash Return</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="VisaReturn" class="control-label">Visa Return</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="CreditReturn" class="control-label">Credit Return</label>
+                </th>
+                <th style="text-align:center;width:200px;">
+                    <label for="UserName" class="control-label">User Name</label>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</form>
+
+@*<div id="InvoiceDetailsPopUp" >
+        <table class="table table-bordered table-responsive table-striped table-hover" style="display: block;overflow-x: auto;white-space: nowrap;" >
+            <thead>
+                <tr>
+                    <th style="text-align:center;width:200px;display:none">
+                        <label for="ID" class="control-label">ID</label>
+                    </th>
+                    <th style="text-align:center;width:200px;">
+                        <label for="Item" class="control-label">Item</label>
+                    </th>
+                    <th style="text-align:center;width:200px;">
+                        <label for="ItemCode" class="control-label">ItemCode</label>
+                    </th>
+                    <th style="text-align:center;width:350px;">
+                        <label for="Quantity" class="control-label">Quantity</label>
+                    </th>
+                    <th style="text-align:center;width:200px;">
+                        <label for="OriginalPrice" class="control-label">Original Price</label>
+                    </th>
+                    <th style="text-align:center;width:120px;">
+                        <label for="Price" class="control-label">Price</label>
+                    </th>
+                    <th style="text-align:center;width:120px;">
+                        <label for="Cost" class="control-label">Cost</label>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>*@
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            //OLD
+            $('#Search').on("click", function (e) {
+                if ($('#custCode').val().trim() == "") {
+                    swal({
+                        title: '<h3>Please insert Customer mobile or Vehicle number!</h3>',
+                        confirmButtonText: 'Ok',
+                        type: "error",
+                        html: true
+
+                    });
+                    e.preventDefault();
+                } else {
+
+                    $.ajax({
+                        url: "/Invoices/Getinvoicedata?CustCode=" + $('#custCode').val(),
+                        dataType: 'json',
+                        type: 'GET',
+                        success: function (data) {
+
+                            if (data.length == 0) {
+                                $("#Invoicetable tbody").empty();
+                                swal({
+                                    title: '<h3>No matching result!</h3>',
+                                    confirmButtonText: 'Ok',
+                                    type: "error",
+                                    html: true
+
+                                });
+                                e.preventDefault();
+                            } else {
+                                /*console.log(data);*/
+                                $("#Invoicetable tbody").empty();
+                                var event_data = "";
+                                event_data += "<tbody>"
+                                $.each(data, function (index, value) {
+                                    /*console.log(value);*/
+                                    event_data += "<tr>"
+                                    event_data += "<td style='text-align:center;display:none'>" + value.ID + "</td>"
+                                    event_data += "<td ><a class='RemoveItembtn'><i class='fa fa-scroll'></i></a></td>"
+                                    event_data += "<td><a  target='_blank' href=Print?InvoiceID=" + value.ID + "><i class='fa fa-print'></i></a></td>"
+                                    event_data += "<td style='text-align:center;'>" + value.ServiceCenterName + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.CustomerName + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.Mobil + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.InvoiceNo + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.InvoiceDate + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.CarNumber + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.TotalAmount + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.VatPercent + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.Vat + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.DiscountAmount + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.TotalReturn + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.TotalWithVat + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.Cash + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.Visa + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.Credit + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.CashReturn + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.VisaReturn + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.CreditReturn + "</td>"
+                                    event_data += "<td style='text-align:center;'>" + value.UserName + "</td>"
+                                    event_data += "</tr>"
+                                });
+                                event_data += "</tbody>"
+                                $("#Invoicetable").append(event_data);
+                            }
+
+
+                        },
+                        error: function (d) {
+                            /*console.log("error");*/
+                            alert("Error");
+                        }
+                    });
+                }
+            });
+
+            $("#Invoicetable").on('click', ".RemoveItembtn", function () {
+                invoiceDetailsId = $(this).closest('tr').children('td:first').text();
+                $.ajax({
+                    url: "/Invoices/GetInvoiceDataDetails?InvoiceID=" + invoiceDetailsId,
+                    type: "Get",
+                    contentType: false,
+                    success: function (data) {
+
+                        var Table = "";
+
+                        Table = "<table id='InvoiceDetailstable'class='table table-bordered table-responsive table-striped table-hover' style='display: block;overflow-x: auto;white-space: nowrap;'>"
+                            + "<thead>"
+                            + "<tr>"
+                            + "<th style='text - align: center; width: 200px; display: none'><label class='control-label'>ID</label></th>"
+                            + "<th style=text-align:center;width:200px;'><label  class='control-label'>Item</label></th>"
+                            + "<th style='text-align:center;width:350px;'><label class='control-label'>Item Code</label></th>"
+                            + "<th style='text-align:center;width:200px;'><label class='control-label'>Quantity</label></th>"
+                            // + "<th style='text-align:center;width:120px;'><label class='control-label'>Original Price</label></th>"
+                            + "<th style='text-align:center;width:200px;'><label class='control-label'>Price</label></th>"
+                            // + "<th style='text-align:center;width:200px;'><label class='control-label'>Cost</label></th>"
+                            + "<th></th>"
+                            + "</tr>"
+                            + "</thead>"
+
+
+
+                        // $("#InvoiceDetailstable tbody").empty();
+                        var event_data = "";
+                        event_data += "<tbody>"
+                        $.each(data, function (index, value) {
+                            event_data += "<tr>"
+                            event_data += "<td style='text-align:center;display:none'>" + value.ID + "</td>"
+                            event_data += "<td style='text-align:center;'>" + value.ItemCode + "</td>"
+                            event_data += "<td style='text-align:center;'>" + value.ItemName + "</td>"
+                            event_data += "<td style='text-align:center;'>" + value.Qty + "</td>"
+                            // event_data += "<td style='text-align:center;'>" + value.OriginalPrice + "</td>"
+                            event_data += "<td style='text-align:center;'>" + value.Price + "</td>"
+                            //event_data += "<td style='text-align:center;'>" + value.Cost + "</td>"
+                            event_data += "<td style='text-align:center;'>" + value.IsPackage + "</td>"
+                            event_data += "</tr>"
+                        });
+                        event_data += "</tbody>"
+                        Table += event_data
+                            + "</table>"
+                        //$("#InvoiceDetailstable").append(event_data);
+
+                        swal({
+                            title: '',
+                            text: Table,
+                            confirmButtonText: 'OK',
+                            type: '',
+                            html: true,
+                            customClass: 'swal-wide',
+                        });
+
+                    },
+                });
+
+            });
+
+        });
+    </script>
+}

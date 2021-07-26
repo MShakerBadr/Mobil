@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9cbf6222d24441486cc3801aef827dd" Name="Diagram1">
+        <EntityTypeShape EntityType="MLPDB01Model.AdminConfiguration" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.AdminSetting" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Auditing" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.AuditingItem" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.AutomatedRequest" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Award" Width="1.5" PointX="21.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.BookingService" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.BookingTimeSlot" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Bundle" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.BundleItem" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Category1" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Category2" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Category3" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Category4" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.City" Width="1.5" PointX="13" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Collection" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Collector" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.CollectorsDailyCode" Width="1.5" PointX="8" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Customer" Width="1.875" PointX="18.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.CustomersCarNumber" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.DailyReportsLog" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.DashBoardChart" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.DocStatu" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.InvoicePayment" Width="1.5" PointX="19.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.InvoiceType" Width="1.5" PointX="19.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.ItemType" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Language" Width="1.5" PointX="1.5" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.LoginLog" Width="1.5" PointX="20.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.LoyaltyLevel" Width="1.5" PointX="7.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MenuItem" Width="1.5" PointX="9.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MenuSubMenuItem" Width="1.5" PointX="11.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MessageComment" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MessageThread" Width="1.5" PointX="21.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MobileCategory" Width="1.5" PointX="13.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.MobileDailyReport" Width="1.5" PointX="21.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.News" Width="1.5" PointX="22.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.NotificationMessage" Width="1.5" PointX="18.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Notification" Width="1.5" PointX="20.5" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.NotificationsStatu" Width="1.5" PointX="18.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.PaymentType" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Point" Width="1.5" PointX="23.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.PointsReason" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.PointsReasonsProduct" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.PointsReasonsSCenter" Width="1.5" PointX="17.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.POSConnectionLog" Width="1.5" PointX="6" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.POSInvoice" Width="1.5" PointX="6" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.POSInvoiceItem" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.PosReport" Width="1.5" PointX="23.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Promotion" Width="1.5" PointX="8.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Reason" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RedemptionRequest" Width="1.5" PointX="23.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RedemptionStatu" Width="1.5" PointX="21.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Region" Width="1.5" PointX="10.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Report" Width="1.5" PointX="10.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RequestItem" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RequestOrder" Width="1.5" PointX="23.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RequestsLog" Width="1.5" PointX="24.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RequestStatu" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RequestType" Width="1.5" PointX="25.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.ReturnInvoice" Width="1.5" PointX="25.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.ReturnInvoiceItem" Width="1.5" PointX="25.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.RptGroup" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SafeLog" Width="1.5" PointX="12.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SalesItem" Width="1.875" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SalesItemCategory" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.ServiceCenterInventory" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.ServiceCenterSalesItem" Width="1.5" PointX="5.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SubMenuItem" Width="1.5" PointX="25.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Supplier" Width="1.5" PointX="14.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Suppliment" Width="1.5" PointX="25.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplimentItem" Width="1.5" PointX="24.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplimentStatu" Width="1.5" PointX="26.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplyNotification" Width="1.5" PointX="17.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplyNotificationAction" Width="1.5" PointX="19.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplyOrder" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SupplyOrderItem" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SystemUser" Width="1.5" PointX="21.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.TempCustomer" Width="1.5" PointX="26.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.TimeSlot" Width="1.5" PointX="27.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.TransferItem" Width="1.5" PointX="27.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.Transfer" Width="1.5" PointX="27.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.TransferStatu" Width="1.5" PointX="27.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.TransferType" Width="1.5" PointX="27.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.User" Width="1.5" PointX="3.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.UserGroupsPage" Width="1.5" PointX="27.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.UserServiceCenter" Width="1.5" PointX="8.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.UsersGroup" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.UsersLog" Width="1.5" PointX="10.75" PointY="28.75" IsExpanded="true" />
+        <AssociationConnector Association="MLPDB01Model.FK_RedemptionRequests_Awards" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_BundleItems_Bundle" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSInvoiceItem_Bundle" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_BundleItems_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_City_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_Customer_City" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_CollectionRequest_Collector" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_Customer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_LoginLog_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_RedemptionRequests_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SalesItem_ItemType" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_User_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_Notifications_NotificationMessages" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_Notifications_NotificationsStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_Notifications_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_PointsReason_Reason" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_PointsReasonsProducts_PointsReason" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_PointsReasonsSCenters_PointsReason" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_PointsReasonsProducts_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSConnectionLog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSInvoice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSInvoiceItem_POSInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSInvoiceItem_POSInvoiceItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_POSInvoiceItem_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_RedemptionRequests_RedemptionStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_RequestItem_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SalesItem_SalesItemCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_ServiceCenterInventory_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_ServiceCenterSalesItem_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyOrderItem_SalesItem" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyNotification_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyNotificationAction_SupplyNotification" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyNotificationAction_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyOrderItem_SupplyOrder" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MLPDB01Model.BookingCancelReason" Width="1.5" PointX="15.375" PointY="29.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.Package" Width="1.5" PointX="29.375" PointY="19.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.CustomerNotification" Width="1.5" PointX="33.875" PointY="21.875" />
+        <EntityTypeShape EntityType="MLPDB01Model.MLPNotification" Width="1.5" PointX="31.625" PointY="25" />
+        <EntityTypeShape EntityType="MLPDB01Model.MLPNotificationType" Width="1.5" PointX="29.375" PointY="25.625" />
+        <AssociationConnector Association="MLPDB01Model.FK_CustomerNotification_Customer" />
+        <AssociationConnector Association="MLPDB01Model.FK_CustomerNotification_MLPNotification" />
+        <AssociationConnector Association="MLPDB01Model.FK_MLPNotification_MLPNotificationType" />
+        <AssociationConnector Association="MLPDB01Model.FK_SalesItem_MobileCategory" />
+        <EntityTypeShape EntityType="MLPDB01Model.BookingStatu" Width="1.5" PointX="24.375" PointY="29.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.Booking" Width="1.5" PointX="26.375" PointY="29.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.ServiceCenter" Width="1.5" PointX="15.25" PointY="10.625" />
+        <AssociationConnector Association="MLPDB01Model.FK_ServiceCenter_City" />
+        <AssociationConnector Association="MLPDB01Model.FK_Notifications_ServiceCenter" />
+        <AssociationConnector Association="MLPDB01Model.FK_PointsReasonsSCenters_PointsReasonsSCenters" />
+        <AssociationConnector Association="MLPDB01Model.FK_RedemptionRequests_ServiceCenter" />
+        <AssociationConnector Association="MLPDB01Model.FK_SupplyNotification_ServiceCenter" />
+        <EntityTypeShape EntityType="MLPDB01Model.MLPCustomerToken" Width="1.5" PointX="29.375" PointY="28.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.Area" Width="1.5" PointX="16" PointY="20.375" />
+        <EntityTypeShape EntityType="MLPDB01Model.CarBrand" Width="1.5" PointX="30.375" PointY="1" />
+        <EntityTypeShape EntityType="MLPDB01Model.CarModel" Width="1.5" PointX="32.625" PointY="0.875" />
+        <EntityTypeShape EntityType="MLPDB01Model.Contract" Width="1.5" PointX="6.75" PointY="38" />
+        <EntityTypeShape EntityType="MLPDB01Model.ContractCar" Width="1.5" PointX="30.375" PointY="3.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.ContractPriceList" Width="1.5" PointX="30.375" PointY="7.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.ContractUser" Width="1.5" PointX="9" PointY="31.5" />
+        <EntityTypeShape EntityType="MLPDB01Model.EngineType" Width="1.5" PointX="15.5" PointY="33.25" />
+        <AssociationConnector Association="MLPDB01Model.FK_Area_City" />
+        <AssociationConnector Association="MLPDB01Model.FK_Customer_Area" />
+        <AssociationConnector Association="MLPDB01Model.FK_CarModel_CarBrand" />
+        <AssociationConnector Association="MLPDB01Model.FK_ContractUsers_Contract" />
+        <AssociationConnector Association="MLPDB01Model.FK_ContractUsers_User" />
+        <AssociationConnector Association="MLPDB01Model.FK_CustomersCarNumbers_EngineType" />
+        <EntityTypeShape EntityType="MLPDB01Model.MLPSMSConfirmation" Width="1.5" PointX="30.375" PointY="11.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.CustomersClearNotification" Width="3.375" PointX="20.5" PointY="31.75" />
+        <AssociationConnector Association="MLPDB01Model.FK_CustomersClearNotifications_Customer" />
+        <EntityTypeShape EntityType="MLPDB01Model.SurvayAnswer" Width="1.5" PointX="30.375" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MLPDB01Model.SurvayEvaluation" Width="1.5" PointX="11.375" PointY="31.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.SurvayQuestion" Width="1.875" PointX="31.375" PointY="18.75" />
+        <EntityTypeShape EntityType="MLPDB01Model.SurvayMultiChoose" Width="1.75" PointX="28.375" PointY="31.75" />
+        <AssociationConnector Association="MLPDB01Model.FK_SurvayAnswers_SurvayQuestions" />
+        <AssociationConnector Association="MLPDB01Model.FK_SurvayMultiChoose_SurvayQuestions" />
+        <AssociationConnector Association="MLPDB01Model.FK_SurvayAnswers_SurvayEvaluation" />
+        <EntityTypeShape EntityType="MLPDB01Model.Advertisement" Width="1.5" PointX="24" PointY="34.5" />
+        <AssociationConnector Association="MLPDB01Model.FK_Advertisements_SystemUsers" />
+        <EntityTypeShape EntityType="MLPDB01Model.AlForsanRedemption" Width="1.5" PointX="25.75" PointY="38.375" />
+        <EntityTypeShape EntityType="MLPDB01Model.AwardsType" Width="1.5" PointX="19" PointY="35.125" />
+        <AssociationConnector Association="MLPDB01Model.FK_AlForsanRedemption_RedemptionRequests" />
+        <AssociationConnector Association="MLPDB01Model.FK_Awards_AwardsTypes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

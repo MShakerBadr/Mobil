@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D2408B6-45A5-4FA7-95F3-2E0B298947D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MLP.BAL</RootNamespace>
+    <AssemblyName>MLP.BAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Old MLP\MLP.API\MLP.BAL\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseObjects\BaseRepository.cs" />
+    <Compile Include="BaseObjects\DbFactory.cs" />
+    <Compile Include="BaseObjects\ReporistoriesInterfaces\IRepository.cs" />
+    <Compile Include="BaseObjects\ReporistoriesInterfaces\IUnitOfWork.cs" />
+    <Compile Include="BaseObjects\UnitOfWork.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AdsRepository.cs" />
+    <Compile Include="Repositories\AlForsanRedemptionRepository.cs" />
+    <Compile Include="Repositories\AwardsTypesRepository.cs" />
+    <Compile Include="Repositories\InvoicePaymentsRepository.cs" />
+    <Compile Include="Repositories\NotificationcleardateRepository.cs" />
+    <Compile Include="Repositories\RequestItemsRepository.cs" />
+    <Compile Include="ViewModels\AdvertisementResponse.cs" />
+    <Compile Include="ViewModels\AlForsanViewModel.cs" />
+    <Compile Include="ViewModels\RequestItemsViewModel.cs" />
+    <Compile Include="Repositories\RequestOrderRepository.cs" />
+    <Compile Include="Repositories\CustomerSMSCheckRepository.cs" />
+    <Compile Include="Repositories\AreaRepository.cs" />
+    <Compile Include="Repositories\BookingStatusRepository.cs" />
+    <Compile Include="Repositories\CarBrandRepository.cs" />
+    <Compile Include="Repositories\CarModelReporsitory.cs" />
+    <Compile Include="Repositories\CityAreaRepository.cs" />
+    <Compile Include="Repositories\CustomerCarsReporsitory.cs" />
+    <Compile Include="Repositories\EngineTypeReporsitory.cs" />
+    <Compile Include="Repositories\MLPTokenRepository.cs" />
+    <Compile Include="Repositories\ReturnInvoiceItemRepository.cs" />
+    <Compile Include="Repositories\ReturnInvoiceRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\CustomerNotificationRepository.cs" />
+    <Compile Include="Repositories\PackageRepository.cs" />
+    <Compile Include="Repositories\BundlesRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\AwardsRepository.cs" />
+    <Compile Include="Repositories\BookingRepository.cs" />
+    <Compile Include="Repositories\BookingServicesRepository.cs" />
+    <Compile Include="Repositories\BookingTimeSlotsRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\InvoiceDetailsRepository.cs" />
+    <Compile Include="Repositories\InvoicesRepository.cs" />
+    <Compile Include="Repositories\BookingCancelReasonsRepository.cs" />
+    <Compile Include="Repositories\LevelRepository.cs" />
+    <Compile Include="Repositories\LoginLogRepository.cs" />
+    <Compile Include="Repositories\MessageCommentRepository.cs" />
+    <Compile Include="Repositories\MessageThreadRepository.cs" />
+    <Compile Include="Repositories\NewsRepository.cs" />
+    <Compile Include="Repositories\PromotionRepository.cs" />
+    <Compile Include="Repositories\RedemptionRequestsRepository.cs" />
+    <Compile Include="Repositories\MobileCategoryRepository.cs" />
+    <Compile Include="Repositories\SalesItemsRepository.cs" />
+    <Compile Include="Repositories\ServiceCenterRepository.cs" />
+    <Compile Include="Repositories\ServiceCenterSalesItemRepository.cs" />
+    <Compile Include="Repositories\TempCustomerRepository.cs" />
+    <Compile Include="Repositories\TimeSlotsRepository.cs" />
+    <Compile Include="Repositories\VehiclesRepository.cs" />
+    <Compile Include="ViewModels\AccountResponse.cs" />
+    <Compile Include="ViewModels\AreaCityResponse.cs" />
+    <Compile Include="ViewModels\AvailableTimesBody.cs" />
+    <Compile Include="ViewModels\AvailableTimesResponse.cs" />
+    <Compile Include="ViewModels\AwardsListResponse.cs" />
+    <Compile Include="ViewModels\BookingHistoryResponse.cs" />
+    <Compile Include="ViewModels\CancelBookingBody.cs" />
+    <Compile Include="ViewModels\CancelReasonsResponse.cs" />
+    <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\CategoryListResponse.cs" />
+    <Compile Include="ViewModels\CheckMobileResponse.cs" />
+    <Compile Include="ViewModels\RequestOrderViewModel.cs" />
+    <Compile Include="ViewModels\ConfirmBookingBody.cs" />
+    <Compile Include="ViewModels\CustomerResponse.cs" />
+    <Compile Include="ViewModels\InvoiceParams.cs" />
+    <Compile Include="ViewModels\InvoicesListResponse.cs" />
+    <Compile Include="ViewModels\LoginResponse.cs" />
+    <Compile Include="ViewModels\CurrentPointsResponse.cs" />
+    <Compile Include="ViewModels\LookupResponse.cs" />
+    <Compile Include="ViewModels\MessageObject.cs" />
+    <Compile Include="ViewModels\MobilContact.cs" />
+    <Compile Include="ViewModels\NearBy.cs" />
+    <Compile Include="ViewModels\NotificationResponse.cs" />
+    <Compile Include="ViewModels\PackageListResponse.cs" />
+    <Compile Include="ViewModels\NewsListResponse.cs" />
+    <Compile Include="ViewModels\ProductsListResponse.cs" />
+    <Compile Include="ViewModels\PromotionListResponse.cs" />
+    <Compile Include="ViewModels\RedemptionListResponse.cs" />
+    <Compile Include="ViewModels\RedeemConfirmResponse.cs" />
+    <Compile Include="ViewModels\RedeemReqResponse.cs" />
+    <Compile Include="ViewModels\SalesItemViewModel.cs" />
+    <Compile Include="ViewModels\SearchParams.cs" />
+    <Compile Include="ViewModels\ServiceCenterListResponse.cs" />
+    <Compile Include="ViewModels\ServiceResponse.cs" />
+    <Compile Include="ViewModels\SortBody.cs" />
+    <Compile Include="ViewModels\VehiclesListResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MLP.DAL\MLP.DAL.csproj">
+      <Project>{89f860cd-6afe-45ce-b28a-6c2306abff5e}</Project>
+      <Name>MLP.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\MLP.BAL.csproj.CopyComplete" />
+    <None Include="obj\Release\MLP.BAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\MLP.BAL.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\MLP.BAL.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Release\MLP.BAL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\MLP.BAL.dll" />
+    <Content Include="obj\Release\MLP.BAL.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

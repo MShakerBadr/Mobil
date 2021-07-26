@@ -1,0 +1,58 @@
+﻿@model MLP.Web.UI.Models.RedeemViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+
+
+@using (Html.BeginForm("Details", "Redeem", FormMethod.Post))
+    {
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Customer, new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Customer)
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Award, new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Award)
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.RedeemDate, new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.RedeemDate)
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.RedeemPoints, new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.RedeemPoints)
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.FK_ServiceCenterID, new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.FK_ServiceCenterID)
+
+                </div>
+            </div>
+        </div>
+    </div>
+    }

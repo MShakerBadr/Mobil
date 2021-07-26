@@ -1,0 +1,2 @@
+D:\Projects\1-Projects\MLP\MLP.BAL\obj\Debug\MLP.BAL.csprojAssemblyReference.cache
+D:\Projects\1-Projects\MLP\MLP.BAL\obj\Debug\MLP.BAL.csproj.CoreCompileInputs.cache

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<MLP.Web.UI.Models.BookingViewModel>
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking</h2>
+<form id="bookingform">
+    <table class="table table-bordered table-responsive table-striped table-hover" id="bookingtable">
+        <tr>
+
+            <th style="text-align:center;width:250px;">
+                <label for="CustomerName" class="control-label">Customer</label>
+            </th>
+            <th style="text-align:center;width:200px;">
+                <label for="CustomerName" class="control-label">Mobile</label>
+            </th>
+            <th style="text-align:center;width:120px;">
+                <label for="CarNumber" class="control-label">Car Number</label>
+            </th>
+            <th style="text-align:center;width:400px;">
+                <label for="Services" class="control-label">Services</label>
+            </th>
+            <th style="text-align:center;width:200px;">
+                <label for="BookingDate" class="control-label"> Date</label>
+            </th>
+            <th style="text-align:center;width:100px;">
+                <label for="FromTime" class="control-label">From</label>
+            </th>
+
+            <th style="text-align:center;width:100px;">
+                <label for="ToTime" class="control-label">To</label>
+            </th>
+            <th style="text-align:center;width:150px;">
+                <label for="BookingStatus" class="control-label">Status</label>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.CustomerMobile)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.CarNumber)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Services)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.BookingDate)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.FromTime)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.ToTime)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.BookingStatus)
+                </td>
+                @*<td>
+                    <button id="btnShowModal" type="button" onclick="@("ShowCancelBooking('" + item.ID + "')")"
+                            class="btn btn-sm btn-default pull-left  button button4">
+                        Cancel Booking
+                    </button>
+                </td>*@
+            </tr>
+        }
+
+    </table>
+
+    <input type="hidden" id="hdnBookingId" />
+    <div class="modal fade" tabindex="-1" id="BookingModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        ×
+                    </button>
+                    <h4 class="modal-title">Cancel Booking</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Reason Cancel:
+                        @Html.DropDownList("CancelReasonList", (SelectList)ViewBag.CancelReasonList, "--Select Reason--", new Dictionary<string, object> { { "id", "CancelReasonList" }, { "class", "form-control" }, { "style", "width:300px !important" }, { "data-val", "true" }, { "data-val-required", "Reason required.." } })
+                        <span class="field-validation-valid" data-valmsg-for="CancelReasonList" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmitBooking" class="btn btn-success button button4">Submit</button>
+                    <button type="button" id="btnHideModal" class="btn btn-danger button button4">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+   
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#btnSubmitBooking").click(function () {
+            @*var actionUrl = '@Url.Action("CancelBooking", "Booking")?Id=' + $('#hdnBookingId').val();
+            $('#TheForm').attr('action', actionUrl);
+            $('#TheForm').submit();*@
+            var cancelReason = $("#CancelReasonList").val();
+            $.ajax({
+                url: "/Booking/BookingCancel",
+                data: { id: $("#hdnBookingId").val(), reasonId: cancelReason },
+                contentType: "application/json",
+                success: function (response) {
+                    var result = response;
+                    $("#BookingModal").modal('hide');
+                    $("#CancelReasonList").val('');
+                    //location.reload();
+                   // var url = '@Url.Action("Index", "Booking")';
+                   // window.location.href = url;
+                }
+            });
+        });
+
+        $("#btnHideModal").click(function () {
+            $("#BookingModal").modal('hide');
+            $("#CancelReasonList").val('');
+        });
+    });
+    function ShowCancelBooking(BookingID) {
+        $("#BookingModal").modal('show');
+        //alert(BookingID);
+        $("#hdnBookingId").val(BookingID);
+    }
+</script>
+}

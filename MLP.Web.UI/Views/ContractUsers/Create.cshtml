@@ -1,0 +1,156 @@
+﻿@model MLP.DAL.ContractUser
+
+@{
+    ViewBag.Title = "Corporate Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.FK_ContractID,"Choose Contract", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.DropDownListFor(m => m.FK_ContractID, ViewBag.AllContracts as SelectList, "Choose Contract", new { @class="form-control select2",@id="choscontract"})
+                    @Html.ValidationMessageFor(model => model.FK_ContractID)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("CarNumber", "Vehicle Number", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <input type="text" id="carno" maxlength="4" placeholder="Numbers" class="form-control" style="margin-left:-15px;" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="carchar" maxlength="3" placeholder="Symbols" class="form-control" style="margin-left:-40px;" />
+                    </div>
+                </div>
+                    
+
+            </div>
+            <div class="form-group">
+                @Html.Label("EmpNo", "Employee Number", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3" >
+                        <input type="text" id="EmpNo" maxlength="15" placeholder="Employee Number" class="form-control" />
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Add To Corporate" id="save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+}
+@section scripts{
+  
+<script>
+    function isNumeric(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    $(document).ready(function () {
+        $('#carno').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+        $('#carchar').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+        
+        $('#carno').on('keypress', function (e) {
+            if (!isNumeric(e)) {
+                e.preventDefault();
+            }
+        });
+        $('#save').on("click", function (e) {
+            if ($('#choscontract').val() != "" && $('#choscontract').val()!=0) {
+                if ($('#carno').val().trim() == "" || $('#carchar').val().trim() == "" || $('#EmpNo').val().trim()=="") {
+                    swal({
+                        title: '<h3>Please fill data!</h3>',
+                        confirmButtonText: 'ok',
+                        type: "error",
+                        html:true
+                        
+                    });
+                    e.preventDefault();
+                } else {
+                    
+                    $.ajax({
+                        url: "/ContractUsers/Checkcar?Carno=" + $('#carno').val() + "&Carchar=" + $('#carchar').val(),
+                        type: "Get",
+                        contentType: false,
+                        success: function (data) {
+                            if (data) {
+                                var dat = {
+                                    ID: $('#choscontract').val(),
+                                    Carno: $('#carno').val(),
+                                    Carchar: $('#carchar').val(),
+                                    EmpNo: $('#EmpNo').val()
+                                };
+                                $.ajax({
+                                    url: "/ContractUsers/SaveData",
+                                    type: "post",
+                                    contentType: 'application/json',
+                                    data: JSON.stringify(dat),
+                                    success: function (Result) {
+                                        if (Result==true) {
+                                            swal({
+                                                title: '<h3>Vehicle Is Inserted successfully</h3>',
+                                                confirmButtonText: 'ok',
+                                                type: "success",
+                                                html: true
+                                            });
+                                            $('#carno').val('');
+                                            $('#carchar').val('');
+                                            $('#EmpNo').val('');
+                                        } else {
+                                            //swal({
+                                            //    title: '<h3>Page timeout, please login again</h3>',
+                                            //    confirmButtonText: 'ok',
+                                            //    type: "error",
+                                            //    html: true
+                                            //});
+                                            window.location.reload("Account/Login");
+                                          //  document.getElementById('logoutForm').submit();
+                                        }
+                                        
+                                    },
+                                });
+                            } else {
+                                swal({
+                                    title: '<h3>This Vehicle already Contracted</h3>',
+                                    confirmButtonText: 'ok',
+                                    type: "error",
+                                    html:true
+                                });
+
+                               
+                            }
+                        },
+                    });
+                   
+                }
+            } else {
+                swal({
+                    title: '<h3>Please choose corporate</h3>',
+                    confirmButtonText: 'ok',
+                    type: "error",
+                    html:true
+                });
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+}

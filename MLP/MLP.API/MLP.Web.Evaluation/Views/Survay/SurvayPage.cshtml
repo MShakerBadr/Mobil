@@ -1,0 +1,271 @@
+﻿@model MLP.Web.Evaluation.Models.SurvayViewModel
+@using MLP.DAL;
+@*@{
+        Layout = null;
+    }*@
+@using (Html.BeginForm("SurvayPage", "Survay", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "SurvayFrm" }))
+{
+    @Html.HiddenFor(s => s.Evaluation.FK_CustomerID)
+    @Html.HiddenFor(s => s.Evaluation.EvaluationDate)
+    @Html.HiddenFor(s => s.Evaluation.EvaluationTime)
+    @Html.HiddenFor(s => s.Evaluation.ID)
+
+
+    
+
+        <div>
+
+            @foreach (var item in Model.Evaluation.SurvayAnswers)
+                {
+                <div class="form-group">
+                    @Html.Label("Question", item.SurvayQuestion.QuestionDescription + " * ", new { @class = "col-md-6 control-label" })
+                    <div class="col-md-6">
+                        @if (item.SurvayQuestion.ValueType == 1)
+                        {
+                            
+                          @Html.DropDownListFor(m => item.AnswerValue, new SelectList(item.SurvayQuestion.SurvayMultiChooses.Where(s => s.IsActive == true).ToList(), "ChooseGroup", "ChooseTextField"), "Choose option", new { @class = "form-control col-md-12", @onchange = "SaveData(this," + item.FK_QuestionID + "," + item.FK_EvaluaionID + ")", @required = "required", @id = item.FK_QuestionID.ToString() + item.FK_EvaluaionID.ToString() })
+                          <br />
+                          @Html.TextAreaFor(m => item.Comments, new { @class = "form-control comment col-md-12", @onchange = "SaveComment(this," + item.FK_QuestionID + "," + item.FK_EvaluaionID + ")", @id = "Comment" + item.FK_QuestionID.ToString() + item.FK_EvaluaionID.ToString(), @placeholder = "Your comment...",style="resize:none;" })
+                           
+                        }
+                        else if (item.SurvayQuestion.ValueType == 2)
+                        {
+                            @Html.DropDownListFor(m => item.AnswerTxtValue, new SelectList(item.SurvayQuestion.SurvayMultiChooses.Where(s => s.IsActive == true).ToList(), "ChooseGroup", "ChooseTextField"), "Choose option", new { @class = "form-control SurvayVal", @onchange = "SaveData(this," + item.FK_QuestionID + "," + item.FK_EvaluaionID + ")", @required = "required", @id = item.FK_QuestionID.ToString() + item.FK_EvaluaionID.ToString() })
+
+                        }
+                        else
+                        {
+                           @*<input type="" multiple/>*@
+                            @Html.TextAreaFor(m => item.AnswerTxtValue, new { @class = "form-control SurvayVal", @required = "required", @onchange = "SaveData(this," + item.FK_QuestionID + "," + item.FK_EvaluaionID + ")", @id = item.FK_QuestionID.ToString() + item.FK_EvaluaionID.ToString(),style="resize:none;" })
+
+                        }
+
+
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Evaluation.Name, "Name / الاسم * ", new { @class = "col-md-6 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.Evaluation.Name, new { @class = "form-control", @required = "required", maxlength = "50" })
+                @Html.ValidationMessageFor(m => m.Evaluation.Name, null, new { style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Evaluation.Nationality, "Nationality / الجنسية * ", new { @class = "col-md-6 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.Evaluation.Nationality, new { @class = "form-control", @required = "required", maxlength = "50" })
+                @Html.ValidationMessageFor(m => m.Evaluation.Nationality, null, new { style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Evaluation.Telephone, "Phone / الهاتف * ", new { @class = "col-md-6 control-label" })
+            <div class="col-md-6">
+                @*<input type="number" min="0" class="form-control" id="Evaluation_Telephone" name="Evaluation.Telephone" maxlength="11" required />*@
+                @Html.TextBoxFor(m => m.Evaluation.Telephone, new { @class = "form-control", @required = "required" ,type="number",maxlength="11" ,min="0"})
+                @Html.ValidationMessageFor(m => m.Evaluation.Telephone, null, new { style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            @Html.LabelFor(m => m.Evaluation.TypeOfCar, "Type of car /نوع السياره   * ", new { @class = "col-md-6 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.Evaluation.TypeOfCar, new { @class = "form-control", @required = "required", maxlength = "50" })
+                @Html.ValidationMessageFor(m => m.Evaluation.TypeOfCar, null, new { style = "color:red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Evaluation.Email, "Email / الاميل * ", new { @class = "col-md-6 control-label" })
+            <div class="col-md-6">
+                @*<input type="email" name="Evaluation.Email" id="Evaluation_Email" required class="form-control" maxlength="100" />*@
+                @Html.TextBoxFor(m => m.Evaluation.Email, new { @class = "form-control", @required = "required",type="Email",maxlength="100" })
+                @Html.ValidationMessageFor(m => m.Evaluation.Email, null, new { style = "color:red" })
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-5">
+                    <input type="submit" class="btn btn-primary" style="width:300px;" value="Supmit"  />
+                </div>
+            </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var X = @Model.Questions.Count;
+      
+        function SaveData(that, questionid, evaluationid) {
+            if ($("#" + that.id).val().trim() != "") {
+                $.ajax({
+                    url: "/Survay/SaveAnswers?QuestionID=" + questionid + "&&EvaluationID=" + evaluationid + "&&Value=" + $("#" + that.id).val(),
+                    type: "Get",
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data=="false") {
+                            $("#" + that.id).val('');
+                        } else {
+                            X = data;
+                            $("#" + that.id).css("border","1px solid #cccccc");
+                        }
+                    },
+                });
+            }else {
+                $("#" + that.id).css("border","1px solid red");
+                ReturnedValues =that.id;
+            }
+
+
+            // alert( + "," + questionid + "," + evaluationid);
+        }
+
+        function SaveComment(that, questionid, evaluationid) {
+            if ($("#" + that.id).val().trim() != "") {
+                $.ajax({
+                    url: "/Survay/SaveComments?QuestionID=" + questionid + "&&EvaluationID=" + evaluationid + "&&Value=" + $("#" + that.id).val(),
+                    type: "Get",
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (!data) {
+                            $("#" + that.id).val('');
+                        }
+                    },
+                });
+            }
+        }
+      
+      
+        $(document).ready(function () {
+           
+            var ReturnedValues="";
+            $("#SurvayFrm").submit(function (e) {
+                //var emailvalue=$("#Evaluation_Telephone").val();
+                //if (emailvalue.startsWith("966")) {
+                //    emailvalue=emailvalue.substring(3, emailvalue.length).trim();
+                //}
+                //$.get( "http://apilayer.net/api/validate?access_key=dd1cd79fed347338d3d2499bef21b1e2&number="+emailvalue+"&country_code=SA&format=1", function( data ) {
+                //    if(data.valid==false){
+                //        e.preventDefault();
+                //        swal({
+                //            confirmButtonText:"OK",
+                //            title:"This is invalid phone number",
+                //            type:"error"
+                //        });
+                //    }
+                //});
+                if (ReturnedValues!="") {
+                    $('input:not([type="submit"],[type="hidden"]),select,textarea').each(
+                        
+                                           function(index){
+                                               if (index == 0||index == 25) {
+    
+                                               }else {
+                                                   var input = $(this);
+                                                   if (input.hasClass("comment")) {
+    
+                                                   }else {
+    
+                                                   
+                                                       if (input.val()=="") {
+                                                           e.preventDefault();
+                                                           $("#"+input.attr('id')).css("border","1px solid red");
+                                                           $("#"+input.attr('id')).focus();
+                                                           swal({
+                                                               confirmButtonText:"OK",
+                                                               title:"Please fill all required fields",
+                                                               type:"error"
+                                                           })
+                                                       }
+                              
+                                                       else {
+                                                           $("#"+input.attr('id')).css("border","1px solid #cccccc");
+                                                       }
+                                                   }
+                                               }
+                                             
+                                               //   alert('Type: ' + input.attr('type') + 'Name: ' + input.attr('name') + 'Value: ' + input.val());
+                                           }
+                                       );
+                }else {
+                    if (X == 0) {
+                        $('input:not([type="submit"],[type="hidden"]),select,textarea').each(
+                        
+                                            function(index){
+                                                if (index == 0||index == 25) {
+    
+                                                }else {
+                                                    var input = $(this);
+                                                    if (input.hasClass("comment")) {
+    
+                                                    }else {
+    
+                                                   
+                                                        if (input.val()=="") {
+                                                            e.preventDefault();
+                                                            $("#"+input.attr('id')).css("border","1px solid red");
+                                                            $("#"+input.attr('id')).focus();
+                                                            swal({
+                                                                confirmButtonText:"OK",
+                                                                title:"Please fill all required fields",
+                                                                type:"error"
+                                                            })
+                                                        }
+                              
+                                                        else {
+                                                            $("#"+input.attr('id')).css("border","1px solid #cccccc");
+                                                        }
+                                                    }
+                                                }
+                                             
+                                                //   alert('Type: ' + input.attr('type') + 'Name: ' + input.attr('name') + 'Value: ' + input.val());
+                                            }
+                                        );
+                       
+                    }else {
+                        e.preventDefault();
+                        swal({
+                            confirmButtonText:"OK",
+                            title:"Please fill all required fields",
+                            type:"error"
+                        })
+                       // setTimeout(function(){window.close()},300)
+                    }
+                }
+                //if (ReturnedValues!="") {
+                //    if ($("#"+ReturnedValues).val()!="") {
+
+                //        if (X != 0) {
+                //            e.preventDefault();
+                //            swal({
+                //                confirmButtonText:"OK",
+                //                title:"Please fill all required fields",
+                //                type:"error"
+                //            })
+                //        }
+                //    }
+                //}else {
+                //    if (X != 0) {
+                //        e.preventDefault();
+                //        swal({
+                //            confirmButtonText:"OK",
+                //            title:"Please fill all required fields",
+                //            type:"error"
+                //        })
+                //    }
+                //}
+                 
+                
+            
+            })
+
+        })
+       
+    </script>
+}
+

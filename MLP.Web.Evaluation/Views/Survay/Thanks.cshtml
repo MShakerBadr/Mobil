@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+@section scripts{
+   
+    <script type='text/javascript'>
+        swal({
+            showConfirmButton: false,
+            title: '<h3>Thank you for your evaluation</h3>',
+            type: 'success',
+            html:true
+        },
+  function () {
+     
+      Window.close();
+      
+  });
+    </script>
+}
+@*<h2><strong>Thanks for your evaluation</strong> </h2>*@
+

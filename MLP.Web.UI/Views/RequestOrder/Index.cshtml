@@ -1,0 +1,125 @@
+﻿@model IEnumerable<MLP.BAL.ViewModels.RequestOrderViewModel>
+@{
+    ViewBag.Title = "Request Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6 ">
+        <label class="control-label" style="font-size:xx-large;">@ViewBag.Title</label>
+    </div>
+   
+    <div class="col-md-2 pull-right  ">
+        @Html.ActionLink("Add Request Order", "Create", "RequestOrder", null, new { @class = "form-control btn-primary", style = "text-align:center;", title = "ADD" })
+    </div>
+</div>
+
+    <table class="table table-bordered table-condensed table-hover table-responsive" width="100%">
+        <tr>
+            <th style="text-align:center;width:60px;">
+                <label>Edit</label>
+            </th>
+            <th style="text-align:center;width:200px;">
+                <label class="control-label">Request Number</label>
+            </th>
+            <th style="text-align:center;width:200px;">
+                <label class="control-label">Creator</label>
+            </th>
+            <th style="text-align:center;width:250px;">
+                <label class="control-label">Creation Date</label>
+            </th>
+            <th style="text-align:center;width:250px;">
+                <label class="control-label">Last Modified Date</label>
+            </th>
+            <th style="text-align:center;width:250px;">
+                <label class="control-label">Status</label>
+            </th>
+            <th style="text-align:center;width:250px;">
+                <label class="control-label">Request Type</label>
+            </th>
+            <th style="text-align:center;width:60px;">
+                <label class="control-label">Cancel</label>
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center">
+                    @if (item.StatusName == "New Request" )
+                    {
+                        <a class="fa fa-edit" href="/RequestOrder/Create?ID=@item.ID" title="Edit"></a>
+                    }
+                </td>
+
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.FK_RequestNo)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Creator)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.LastModifiedDate)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.StatusName)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.RequestTypeName)
+                </td>
+                <td style="text-align:center">
+                    @if (item.StatusName == "New Request")
+                    {
+                        <a class="fa fa-ban CancelBtn" @*href="/RequestOrder/Index?ID=@item.ID"*@ id="@item.ID" title="Cancel"></a>
+                    }
+                </td>
+
+
+
+            </tr>
+        }
+
+    </table>
+
+@section scripts{
+    <script>
+        $(".CancelBtn").click(function (e) {
+            var ID=this.id;
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Do you want to cancel this request?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                showCancelButton: true,
+                cancelButtonText: "No",
+                ConfirmButtonText:"Yes",
+                closeOnConfirm: true,
+                closeOnCancel: true,
+                html:true
+            }, function (willDelete) {
+                if (willDelete) {
+                    if (window.location.href.indexOf('Index')>0) {
+                        window.location.replace("?ID=" + ID);
+                    } else {
+                        window.location.replace("Index?ID=" + ID);
+                    }
+                   
+                }
+                //} else {
+                //    swal("Nothing Changed!");
+                //}
+            });
+        })
+        //function CancelOrder(args)
+        //{
+           
+        //}
+    </script>
+}

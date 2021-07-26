@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89F860CD-6AFE-45CE-B28A-6C2306ABFF5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MLP.DAL</RootNamespace>
+    <AssemblyName>MLP.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminConfiguration.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSetting.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Advertisement.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AlForsanRedemption.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Area.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Auditing.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditingItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutomatedRequest.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Award.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AwardsType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Booking.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingCancelReason.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingService.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingTimeSlot.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bundle.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BundleItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarBrand.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarModel.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category1.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category2.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category3.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category4.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Collection.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Collector.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CollectorsDailyCode.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractCar.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractPriceList.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractUser.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerNotification.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersCarNumber.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersClearNotification.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyReportsLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoardChart.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EngineType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePayment.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoyaltyLevel.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuSubMenuItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageComment.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageThread.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPCustomerToken.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPDB01.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MLPDB01.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPDB01.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPDB01.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MLPDB01.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MLPNotification.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPNotificationType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MLPSMSConfirmation.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MobileCategory.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MobileDailyReport.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="News.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationMessage.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationsStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Package.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Point.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointsReason.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointsReasonsProduct.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointsReasonsSCenter.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSConnectionLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSInvoice.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSInvoiceItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosReport.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Promotion.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reason.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RedemptionRequest.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RedemptionStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Region.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestOrder.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestsLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnInvoice.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnInvoiceItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RptGroup.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SafeLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesItemCategory.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCenter.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCenterInventory.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCenterSalesItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubMenuItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliment.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplimentItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplimentStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyNotification.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyNotificationAction.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyOrder.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyOrderItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurvayAnswer.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurvayEvaluation.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurvayMultiChoose.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurvayQuestion.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemUser.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempCustomer.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSlot.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferItem.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferStatu.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferType.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroupsPage.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserServiceCenter.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersGroup.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersLog.cs">
+      <DependentUpon>MLPDB01.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="MLPDB01.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MLPDB01.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MLPDB01.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MLPDB01.edmx</DependentUpon>
+      <LastGenOutput>MLPDB01.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MLPDB01.edmx.diagram">
+      <DependentUpon>MLPDB01.edmx</DependentUpon>
+    </None>
+    <None Include="MLPDB01.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MLPDB01.edmx</DependentUpon>
+      <LastGenOutput>MLPDB01.cs</LastGenOutput>
+    </None>
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\edmxResourcesToEmbed\MLPDB01.csdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\MLPDB01.msl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\MLPDB01.ssdl" />
+    <None Include="obj\Release\MLP.DAL.csproj.CopyComplete" />
+    <None Include="obj\Release\MLP.DAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\MLP.DAL.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\MLP.DAL.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Release\MLP.DAL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\MLP.DAL.dll" />
+    <Content Include="obj\Release\MLP.DAL.pdb" />
+    <Content Include="obj\Release\TempPE\MLPDB01.Context.cs.dll" />
+    <Content Include="obj\Release\TempPE\MLPDB01.cs.dll" />
+    <Content Include="obj\Release\TempPE\MLPDB01.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\MLPDB011.cs.dll" />
+    <Content Include="obj\Release\TempPE\MLPDB011.Designer.cs.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

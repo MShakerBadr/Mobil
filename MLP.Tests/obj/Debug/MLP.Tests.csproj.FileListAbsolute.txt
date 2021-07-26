@@ -1,0 +1,2 @@
+D:\Projects\1-Projects\MLP\MLP.Tests\obj\Debug\MLP.Tests.csprojAssemblyReference.cache
+D:\Projects\1-Projects\MLP\MLP.Tests\obj\Debug\MLP.Tests.csproj.CoreCompileInputs.cache

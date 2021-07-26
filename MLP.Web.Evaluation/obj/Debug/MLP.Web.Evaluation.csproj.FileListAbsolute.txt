@@ -1,0 +1,2 @@
+D:\Projects\1-Projects\MLP\MLP.Web.Evaluation\obj\Debug\MLP.Web.Evaluation.csprojAssemblyReference.cache
+D:\Projects\1-Projects\MLP\MLP.Web.Evaluation\obj\Debug\MLP.Web.Evaluation.csproj.CoreCompileInputs.cache
